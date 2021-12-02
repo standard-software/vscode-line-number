@@ -1,0 +1,112 @@
+{
+  "name": "vscode-line-number",
+  "displayName": "Line Number",
+  "description": "Insert line numbers in text and copy.",
+  "version": "2.0.0",
+  "publisher": "SatoshiYamamoto",
+  "author": {
+    "name": "Satoshi Yamamoto",
+    "email": "standard.software.net@gmail.com",
+    "url": "https://www.facebook.com/stndardsoftware"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/standard-software/vscode-line-number"
+  },
+  "engines": {
+    "vscode": "^1.62.3"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "line number"
+  ],
+  "activationEvents": [
+    "onCommand:LineNumber.EditInsertFileLineNumberNoFormat",
+    "onCommand:LineNumber.EditInsertFileLineNumberDeleteIndent",
+    "onCommand:LineNumber.EditInsertInputStartNoFormat",
+    "onCommand:LineNumber.EditInsertInputStartDeleteIndent",
+    "onCommand:LineNumber.EditDeleteLineNumber",
+    "onCommand:LineNumber.EditLineNumberTextDeleteBrankLine",
+    "onCommand:LineNumber.EditLineNumberTextDeleteIndent",
+    "onCommand:LineNumber.CopyWithoutPathNoFormat",
+    "onCommand:LineNumber.CopyWithoutPathDeleteIndent",
+    "onCommand:LineNumber.CopyWithFullPathFilenameNoFormat",
+    "onCommand:LineNumber.CopyWithFullPathFilenameDeleteIndent",
+    "onCommand:LineNumber.CopyWithFilenameNoFormat",
+    "onCommand:LineNumber.CopyWithFilenameDeleteIndent",
+
+    "onCommand:LineNumber.SelectFunction"
+  ],
+  "main": "./src/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "LineNumber.EditInsertFileLineNumberNoFormat",
+        "title": "Line Number | Edit | Insert File Line Number | No Format"
+      },
+      {
+        "command": "LineNumber.EditInsertFileLineNumberDeleteIndent",
+        "title": "Line Number | Edit | Insert File Line Number | Delete Indent"
+      },
+      {
+        "command": "LineNumber.EditInsertInputStartNoFormat",
+        "title": "Line Number | Edit | Insert Input Start | No Format"
+      },
+      {
+        "command": "LineNumber.EditInsertInputStartDeleteIndent",
+        "title": "Line Number | Edit | Insert Input Start | Delete Indent"
+      },
+      {
+        "command": "LineNumber.EditDeleteLineNumber",
+        "title": "Line Number | Edit | Delete Line Number"
+      },
+      {
+        "command": "LineNumber.EditLineNumberTextDeleteBrankLine",
+        "title": "Line Number | Edit | Edit Line Number Text | Delete Brank Line"
+      },
+      {
+        "command": "LineNumber.EditLineNumberTextDeleteIndent",
+        "title": "Line Number | Edit | Edit Line Number Text | Delete Indent"
+      },
+      {
+        "command": "LineNumber.CopyWithoutPathNoFormat",
+        "title": "Line Number | Copy | Without Path | No Format"
+      },
+      {
+        "command": "LineNumber.CopyWithoutPathDeleteIndent",
+        "title": "Line Number | Copy | Without Path | Delete Indent"
+      },
+      {
+        "command": "LineNumber.CopyWithFullPathFilenameNoFormat",
+        "title": "Line Number | Copy | With FullPath/Filename | No Format"
+      },
+      {
+        "command": "LineNumber.CopyWithFullPathFilenameDeleteIndent",
+        "title": "Line Number | Copy | With FullPath/Filename | Delete Indent"
+      },
+      {
+        "command": "LineNumber.CopyWithFilenameNoFormat",
+        "title": "Line Number | Copy | With Filename | No Format"
+      },
+      {
+        "command": "LineNumber.CopyWithFilenameDeleteIndent",
+        "title": "Line Number | Copy | With Filename | Delete Indent"
+      },
+      {
+        "command": "LineNumber.SelectFunction",
+        "title": "Line Number | Select Function"
+      }
+    ],
+    "configuration": {}
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "": ""
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0"
+  }
+}
