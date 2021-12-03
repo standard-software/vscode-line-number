@@ -1,8 +1,8 @@
 {
   "name": "vscode-line-number",
   "displayName": "Line Number",
-  "description": "Insert line numbers in text and copy.",
-  "version": "2.0.0",
+  "description": "Insert and Delete line numbers in text and copy.",
+  "version": "2.0.1",
   "publisher": "SatoshiYamamoto",
   "author": {
     "name": "Satoshi Yamamoto",

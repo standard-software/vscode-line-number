@@ -79,6 +79,9 @@ Released under the [MIT License][license].
 
 ## Version
 
+### 2.0.1
+- update README
+
 ### 2.0.0
 2021/12/02(Thu)
 - Refactored and rebuilt anew.
