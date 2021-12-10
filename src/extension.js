@@ -11,50 +11,70 @@ const {
   _subLastDelimFirst,
 } = require(`./parts/parts.js`);
 
+const loopSelectionsLines = (editor, func) => {
+  for (const { start, end } of editor.selections) {
+    for (let i = start.line; i <= end.line; i += 1) {
+      if (
+        start.line !== end.line &&
+        i === end.line &&
+        end.character === 0
+      ) {
+        break;
+      }
+      func(i);
+    }
+  }
+};
+
 const getIndent = (line) => {
   return line.length - _trimFirst(line, [` `, `\t`]).length;
 };
 
 const getMinIndent = (editor) => {
   let minIndent = Infinity;
-  for (let { start, end } of editor.selections) {
-    for (let i = start.line; i <= end.line; i += 1) {
-      const {text} = editor.document.lineAt(i);
-      if (_trim(text) === ``) { continue; }
-      const indent = getIndent(text);
-      if (indent < minIndent) {
-        minIndent = indent;
-      }
+  loopSelectionsLines(editor, i => {
+    const {text} = editor.document.lineAt(i);
+    if (_trim(text) === ``) { return; }
+    const indent = getIndent(text);
+    if (indent < minIndent) {
+      minIndent = indent;
     }
-  };
+  });
   if (minIndent === Infinity) { minIndent = 0; }
   return minIndent;
 };
 
 const getMinIndentExcludeLineNumber = (editor) => {
   let minIndent = Infinity;
-  for (let { start, end } of editor.selections) {
-    for (let i = start.line; i <= end.line; i += 1) {
-      const {text} = editor.document.lineAt(i);
-      if (_trim(text) === ``) { continue; }
-      if (isNull(_trim(text).match(/^\d+:+.*$/))) { continue; }
-      const colonAfterText = _subLastDelimFirst(text, `: `);
-      if (_trim(colonAfterText) === ``) { continue; }
-      const indent = getIndent(colonAfterText);
-      if (indent < minIndent) {
-        minIndent = indent;
-      }
+  loopSelectionsLines(editor, i => {
+    const {text} = editor.document.lineAt(i);
+    if (_trim(text) === ``) { return; }
+    if (isNull(_trim(text).match(/^\d+:+.*$/))) { return; }
+    const colonAfterText = _subLastDelimFirst(text, `: `);
+    if (_trim(colonAfterText) === ``) { return; }
+    const indent = getIndent(colonAfterText);
+    if (indent < minIndent) {
+      minIndent = indent;
     }
-  };
+  });
   if (minIndent === Infinity) { minIndent = 0; }
   return minIndent;
 };
 
-const getMaxNumberDigit = (editor) => {
+const getMaxFileLineNumberDigit = (editor) => {
   let result = 0;
-  for (let { end } of editor.selections) {
-    result = Math.max(result, end.line.toString().length);
-  }
+  loopSelectionsLines(editor, i => {
+    result = Math.max(result, i.toString().length);
+  });
+  return result;
+};
+
+const getInputLineNumberDigit = (editor, lineNumber) => {
+  let result = 0;
+  loopSelectionsLines(editor, () => {
+    result = Math.max(result, lineNumber.toString().length);
+    lineNumber += 1;
+  });
   return result;
 };
 
@@ -132,28 +152,24 @@ const getPathFileName = (editor) => {
 
 const lineNumberTextNoFormat = (editor) => {
   let result = ``;
-  const numberDigit = getMaxNumberDigit(editor);
-  for (let { start, end } of editor.selections) {
-    for (let i = start.line; i <= end.line; i += 1) {
-      const { textIncludeLineBreak } = getLineTextInfo(editor, i);
-      const lineNumber = (i + 1).toString().padStart(numberDigit, `0`);
-      result += `${lineNumber}: ${textIncludeLineBreak}`;
-    }
-  };
+  const numberDigit = getMaxFileLineNumberDigit(editor);
+  loopSelectionsLines(editor, i => {
+    const { textIncludeLineBreak } = getLineTextInfo(editor, i);
+    const lineNumber = (i + 1).toString().padStart(numberDigit, `0`);
+    result += `${lineNumber}: ${textIncludeLineBreak}`;
+  });
   return result;
 };
 
 const lineNumberTextDeleteIndent = (editor) => {
   let result = ``;
-  const numberDigit = getMaxNumberDigit(editor);
+  const numberDigit = getMaxFileLineNumberDigit(editor);
   const minIndent = getMinIndent(editor);
-  for (let { start, end } of editor.selections) {
-    for (let i = start.line; i <= end.line; i += 1) {
-      const { text, lineBreak } = getLineTextInfo(editor, i);
-      const lineNumber = (i + 1).toString().padStart(numberDigit, `0`);
-      result += `${lineNumber}: ${_subLength(text, minIndent)}${lineBreak}`;
-    }
-  };
+  loopSelectionsLines(editor, i => {
+    const { text, lineBreak } = getLineTextInfo(editor, i);
+    const lineNumber = (i + 1).toString().padStart(numberDigit, `0`);
+    result += `${lineNumber}: ${_subLength(text, minIndent)}${lineBreak}`;
+  });
   return result;
 };
 
@@ -185,23 +201,27 @@ function activate(context) {
     );
   };
 
-  registerCommand(`LineNumber.SelectFunction`, () => {
-
-    let select1Edit, select1Copy;
-    const commands = [
-      [`Edit`,  ``, () => { select1Edit(); }],
-      [`Copy`,  ``, () => { select1Copy(); }],
-    ].map(c => ({label:c[0], description:c[1], func:c[2]}));
+  const commandQuickPick = (commandsArray, placeHolder) => {
+    const commands = commandsArray.map(c => ({label:c[0], description:c[1], func:c[2]}));
     vscode.window.showQuickPick(
       commands.map(({label, description}) => ({label, description})),
       {
         canPickMany: false,
-        placeHolder: `Line Number | Select Function`
+        placeHolder
       }
     ).then((item) => {
       if (!item) { return; }
       commands.find(({label}) => label === item.label).func();
     });
+  };
+
+  registerCommand(`LineNumber.SelectFunction`, () => {
+
+    let select1Edit, select1Copy;
+    commandQuickPick([
+      [`Edit`,  ``, () => { select1Edit(); }],
+      [`Copy`,  ``, () => { select1Copy(); }],
+    ], `Line Number | Select Function`);
 
     select1Edit = () => {
       let
@@ -226,54 +246,24 @@ function activate(context) {
       });
 
       select2EditInsertLineNumber = () => {
-        const commands = [
+        commandQuickPick([
           [`No Format`,       ``, () => { mainEdit(`InsertNoFormat`); }],
           [`Delete Indent`,   ``, () => { mainEdit(`InsertDeleteIndent`); }],
-        ].map(c => ({label:c[0], description:c[1], func:c[2]}));
-        vscode.window.showQuickPick(
-          commands.map(({label, description}) => ({label, description})),
-          {
-            canPickMany: false,
-            placeHolder: `Line Number | Edit | Insert File Line Number`,
-          }
-        ).then((item) => {
-          if (!item) { return; }
-          commands.find(({label}) => label === item.label).func();
-        });
+        ], `Line Number | Edit | Insert File Line Number`);
       };
 
       select2EditInsertInputStart = () => {
-        const commands = [
+        commandQuickPick([
           [`No Format`,       ``, () => { mainEdit(`InputNoFormat`); }],
           [`Delete Indent`,   ``, () => { mainEdit(`InputDeleteIndent`); }],
-        ].map(c => ({label:c[0], description:c[1], func:c[2]}));
-        vscode.window.showQuickPick(
-          commands.map(({label, description}) => ({label, description})),
-          {
-            canPickMany: false,
-            placeHolder: `Line Number | Edit | Insert Input Start`,
-          }
-        ).then((item) => {
-          if (!item) { return; }
-          commands.find(({label}) => label === item.label).func();
-        });
+        ], `Line Number | Edit | Insert Input Start`);
       };
 
       select2EditLineNumberText = () => {
-        const commands = [
+        commandQuickPick([
           [`Delete Brank Line`, ``, () => { mainEdit(`DeleteBrankLine`); }],
           [`Delete Indent`,     ``, () => { mainEdit(`DeleteIndent`); }],
-        ].map(c => ({label:c[0], description:c[1], func:c[2]}));
-        vscode.window.showQuickPick(
-          commands.map(({label, description}) => ({label, description})),
-          {
-            canPickMany: false,
-            placeHolder: `Line Number | Edit | Edit Line Number Text`,
-          }
-        ).then((item) => {
-          if (!item) { return; }
-          commands.find(({label}) => label === item.label).func();
-        });
+        ], `Line Number | Edit | Edit Line Number Text`);
       };
 
     };
@@ -302,71 +292,24 @@ function activate(context) {
       });
 
       select2CopyWithoutPath = () => {
-        const commands = [
+        commandQuickPick([
           [`No Format`,       ``, () => { mainCopy(`WithoutPathNoFormat`); }],
           [`Delete Indent`,   ``, () => { mainCopy(`WithoutPathDeleteIndent`); }],
-        ].map(c => ({label:c[0], description:c[1], func:c[2]}));
-        vscode.window.showQuickPick(
-          commands.map(({label, description}) => ({label, description})),
-          {
-            canPickMany: false,
-            placeHolder: `Line Number | Copy | Without Path`,
-          }
-        ).then((item) => {
-          if (!item) { return; }
-          commands.find(({label}) => label === item.label).func();
-        });
+        ], `Line Number | Copy | Without Path`);
       };
 
       select2CopyWithFullPath = () => {
-        const commands = [
+        commandQuickPick([
           [`No Format`,       ``, () => { mainCopy(`WithFullPathNoFormat`); }],
           [`Delete Indent`,   ``, () => { mainCopy(`WithFullPathDeleteIndent`); }],
-        ].map(c => ({label:c[0], description:c[1], func:c[2]}));
-        vscode.window.showQuickPick(
-          commands.map(({label, description}) => ({label, description})),
-          {
-            canPickMany: false,
-            placeHolder: `Line Number | Copy | With FullPath/Filename`,
-          }
-        ).then((item) => {
-          if (!item) { return; }
-          commands.find(({label}) => label === item.label).func();
-        });
+        ], `Line Number | Copy | With FullPath/Filename`);
       };
 
-      // select2CopyRelativePath = () => {
-      //   const commands = [
-      //     [`No Format`,       ``, () => { mainCopy(`WithRelativePathNoFormat`) }],
-      //     [`Delete Indent`,   ``, () => { mainCopy(`WithRelativePathDeleteIndent`) }],
-      //   ].map(c => ({label:c[0], description:c[1], func:c[2]}));
-      //   vscode.window.showQuickPick(
-      //     commands.map(({label, description}) => ({label, description})),
-      //     {
-      //       canPickMany: false,
-      //       placeHolder: `Line Number | Copy | With RelativePath/Filename`,
-      //     }
-      //   ).then((item) => {
-      //     if (!item) { return; }
-      //     commands.find(({label}) => label === item.label).func();
-      //   });
-      // }
-
       select2CopyWithFilename = () => {
-        const commands = [
+        commandQuickPick([
           [`No Format`,       ``, () => { mainCopy(`WithFilenameNoFormat`); }],
           [`Delete Indent`,   ``, () => { mainCopy(`WithFilenameDeleteIndent`); }],
-        ].map(c => ({label:c[0], description:c[1], func:c[2]}));
-        vscode.window.showQuickPick(
-          commands.map(({label, description}) => ({label, description})),
-          {
-            canPickMany: false,
-            placeHolder: `Line Number | Copy | With Filename`,
-          }
-        ).then((item) => {
-          if (!item) { return; }
-          commands.find(({label}) => label === item.label).func();
-        });
+        ], `Line Number | Copy | With Filename`);
       };
     };
 
@@ -383,31 +326,27 @@ function activate(context) {
 
     case `InsertNoFormat`: {
       editor.edit(editBuilder => {
-        const numberDigit = getMaxNumberDigit(editor);
-        for (let { start, end } of editor.selections) {
-          for (let i = start.line; i <= end.line; i += 1) {
-            const lineNumberText = (i + 1).toString().padStart(numberDigit, `0`);
-            editBuilder.insert(new vscode.Position(i, 0), `${lineNumberText}: `);
-          }
-        };
+        const numberDigit = getMaxFileLineNumberDigit(editor);
+        loopSelectionsLines(editor, i => {
+          const lineNumberText = (i + 1).toString().padStart(numberDigit, `0`);
+          editBuilder.insert(new vscode.Position(i, 0), `${lineNumberText}: `);
+        });
       });
     } break;
 
     case `InsertDeleteIndent`: {
       editor.edit(editBuilder => {
-        const numberDigit = getMaxNumberDigit(editor);
+        const numberDigit = getMaxFileLineNumberDigit(editor);
         const minIndent = getMinIndent(editor);
-        for (let { start, end } of editor.selections) {
-          for (let i = start.line; i <= end.line; i += 1) {
-            const { text } = getLineTextInfo(editor, i);
-            const subText = _subLength(text, minIndent);
-            const lineNumberText = (i + 1).toString().padStart(numberDigit, `0`);
-            const range = new vscode.Range(
-              i, 0, i, text.length,
-            );
-            editBuilder.replace(range, `${lineNumberText}: ${subText}`);
-          }
-        };
+        loopSelectionsLines(editor, i => {
+          const { text } = getLineTextInfo(editor, i);
+          const subText = _subLength(text, minIndent);
+          const lineNumberText = (i + 1).toString().padStart(numberDigit, `0`);
+          const range = new vscode.Range(
+            i, 0, i, text.length,
+          );
+          editBuilder.replace(range, `${lineNumberText}: ${subText}`);
+        });
       });
     } break;
 
@@ -428,34 +367,30 @@ function activate(context) {
         case `InputNoFormat`: {
           editor.edit(editBuilder => {
             let lineNumber = inputInteger;
-            const numberDigit = getMaxNumberDigit(editor);
-            for (let { start, end } of editor.selections) {
-              for (let i = start.line; i <= end.line; i += 1) {
-                const lineNumberText = lineNumber.toString().padStart(numberDigit, `0`);
-                editBuilder.insert(new vscode.Position(i, 0), `${lineNumberText}: `);
-                lineNumber += 1;
-              }
-            };
+            const numberDigit = getInputLineNumberDigit(editor, lineNumber);
+            loopSelectionsLines(editor, i => {
+              const lineNumberText = lineNumber.toString().padStart(numberDigit, `0`);
+              editBuilder.insert(new vscode.Position(i, 0), `${lineNumberText}: `);
+              lineNumber += 1;
+            });
           });
         } break;
 
         case `InputDeleteIndent`: {
           editor.edit(editBuilder => {
             let lineNumber = inputInteger;
-            const numberDigit = getMaxNumberDigit(editor);
+            const numberDigit = getInputLineNumberDigit(editor, lineNumber);
             const minIndent = getMinIndent(editor);
-            for (let { start, end } of editor.selections) {
-              for (let i = start.line; i <= end.line; i += 1) {
-                const { text } = getLineTextInfo(editor, i);
-                const subText = _subLength(text, minIndent);
-                const lineNumberText = lineNumber.toString().padStart(numberDigit, `0`);
-                const range = new vscode.Range(
-                  i, 0, i, text.length,
-                );
-                editBuilder.replace(range, `${lineNumberText}: ${subText}`);
-                lineNumber += 1;
-              }
-            };
+            loopSelectionsLines(editor, i => {
+              const { text } = getLineTextInfo(editor, i);
+              const subText = _subLength(text, minIndent);
+              const lineNumberText = lineNumber.toString().padStart(numberDigit, `0`);
+              const range = new vscode.Range(
+                i, 0, i, text.length,
+              );
+              editBuilder.replace(range, `${lineNumberText}: ${subText}`);
+              lineNumber += 1;
+            });
           });
         } break;
 
@@ -468,57 +403,50 @@ function activate(context) {
     case `DeleteLineNumber`: {
       const delimiter = `: `;
       editor.edit(editBuilder => {
-        for (let { start, end } of editor.selections) {
-          for (let i = start.line; i <= end.line; i += 1) {
-            const { text } = getLineTextInfo(editor, i);
-            if (!text.match(/^.*\d:\s.*$/)) { continue; }
-            const colonIndex = _indexOfFirst(text, delimiter);
-            const range = new vscode.Range(
-              i, 0, i, colonIndex + delimiter.length,
-            );
-            editBuilder.delete(range);
-          }
-        };
+        loopSelectionsLines(editor, i => {
+          const { text } = getLineTextInfo(editor, i);
+          if (!text.match(/^.*\d:\s.*$/)) { return; }
+          const colonIndex = _indexOfFirst(text, delimiter);
+          const range = new vscode.Range(
+            i, 0, i, colonIndex + delimiter.length,
+          );
+          editBuilder.delete(range);
+        });
       });
     } break;
 
     case `DeleteBrankLine`: {
       editor.edit(editBuilder => {
-        for (let { start, end } of editor.selections) {
-          for (let i = end.line; start.line <= i; i -= 1) {
-            const { text } = getLineTextInfo(editor, i);
-            console.log({text}, _trim(text).match(/^\d+:+.*$/), _subLastDelimFirst(text, `:`));
-            if (isNull(_trim(text).match(/^\d+:+.*$/))) { continue; }
-            if (_trim(_subLastDelimFirst(text, `:`)) === ``) {
-              const range = new vscode.Range(
-                i, 0, i + 1, 0,
-              );
-              editBuilder.delete(range);
-            }
+        loopSelectionsLines(editor, i => {
+          const { text } = getLineTextInfo(editor, i);
+          console.log({text}, _trim(text).match(/^\d+:+.*$/), _subLastDelimFirst(text, `:`));
+          if (isNull(_trim(text).match(/^\d+:+.*$/))) { return; }
+          if (_trim(_subLastDelimFirst(text, `:`)) === ``) {
+            const range = new vscode.Range(
+              i, 0, i + 1, 0,
+            );
+            editBuilder.delete(range);
           }
-        };
-
+        });
       });
     } break;
 
     case `DeleteIndent`: {
       editor.edit(editBuilder => {
         const minIndent = getMinIndentExcludeLineNumber(editor);
-        for (let { start, end } of editor.selections) {
-          for (let i = start.line; i <= end.line; i += 1) {
-            const { text } = getLineTextInfo(editor, i);
-            if (isNull(_trim(text).match(/^\d+:+.*$/))) { continue; }
+        loopSelectionsLines(editor, i => {
+          const { text } = getLineTextInfo(editor, i);
+          if (isNull(_trim(text).match(/^\d+:+.*$/))) { return; }
 
-            const colonAfterText = _subLastDelimFirst(text, `:`);
-            if (minIndent < colonAfterText.length) {
-              const range = new vscode.Range(
-                i, text.length - colonAfterText.length,
-                i, text.length - colonAfterText.length + minIndent,
-              );
-              editBuilder.delete(range);
-            }
+          const colonAfterText = _subLastDelimFirst(text, `:`);
+          if (minIndent < colonAfterText.length) {
+            const range = new vscode.Range(
+              i, text.length - colonAfterText.length,
+              i, text.length - colonAfterText.length + minIndent,
+            );
+            editBuilder.delete(range);
           }
-        };
+        });
 
       });
     } break;
