@@ -2,7 +2,7 @@
   "name": "vscode-line-number",
   "displayName": "Line Number",
   "description": "Insert and Delete line numbers in text and copy.",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "publisher": "SatoshiYamamoto",
   "author": {
     "name": "Satoshi Yamamoto",
@@ -37,6 +37,7 @@
     "onCommand:LineNumber.CopyWithFullPathFilenameDeleteIndent",
     "onCommand:LineNumber.CopyWithFilenameNoFormat",
     "onCommand:LineNumber.CopyWithFilenameDeleteIndent",
+    "onCommand:LineNumber.CopyDeleteLineNumber",
 
     "onCommand:LineNumber.SelectFunction"
   ],
@@ -73,27 +74,31 @@
       },
       {
         "command": "LineNumber.CopyWithoutPathNoFormat",
-        "title": "Line Number | Copy | Without Path | No Format"
+        "title": "Line Number | Copy Clipboard | Without Path | No Format"
       },
       {
         "command": "LineNumber.CopyWithoutPathDeleteIndent",
-        "title": "Line Number | Copy | Without Path | Delete Indent"
+        "title": "Line Number | Copy Clipboard | Without Path | Delete Indent"
       },
       {
         "command": "LineNumber.CopyWithFullPathFilenameNoFormat",
-        "title": "Line Number | Copy | With FullPath/Filename | No Format"
+        "title": "Line Number | Copy Clipboard | With FullPath/Filename | No Format"
       },
       {
         "command": "LineNumber.CopyWithFullPathFilenameDeleteIndent",
-        "title": "Line Number | Copy | With FullPath/Filename | Delete Indent"
+        "title": "Line Number | Copy Clipboard | With FullPath/Filename | Delete Indent"
       },
       {
         "command": "LineNumber.CopyWithFilenameNoFormat",
-        "title": "Line Number | Copy | With Filename | No Format"
+        "title": "Line Number | Copy Clipboard | With Filename | No Format"
       },
       {
         "command": "LineNumber.CopyWithFilenameDeleteIndent",
-        "title": "Line Number | Copy | With Filename | Delete Indent"
+        "title": "Line Number | Copy Clipboard | With Filename | Delete Indent"
+      },
+      {
+        "command": "LineNumber.CopyDeleteLineNumber",
+        "title": "Line Number | Copy Clipboard | Copy Delete Line Number"
       },
       {
         "command": "LineNumber.SelectFunction",
@@ -103,10 +108,13 @@
     "configuration": {}
   },
   "scripts": {
-    "lint": "eslint .",
+    "lint": "eslint --fix ./src",
+    "pack": "vsce package",
+    "exinstall": "code --install-extension vscode-line-number-2.1.0.vsix",
     "": ""
   },
   "devDependencies": {
-    "eslint": "^7.32.0"
+    "eslint": "^7.32.0",
+    "vsce": "^2.5.1"
   }
 }

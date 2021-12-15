@@ -6,7 +6,7 @@
 [![License][license-badge]][license]
 
 This extension has the following functions.
-- Get a clipboard copy with file path and line number.
+- Get a Copy Clipboard with file path and line number.
 - Insert file line numbers with indentation removed.
 - Inserting line numbers by entering a starting number.
 - Line numbers can be deleted.
@@ -78,6 +78,13 @@ Released under the [MIT License][license].
 [license]: https://github.com/standard-software/vscode-line-number/blob/master/LICENSE
 
 ## Version
+
+### 2.1.0
+- update fix Select Range endLine
+- update fix Input LineNumber Digit
+- update fix Delete LineNumber logic
+- add Copy Delete Line Number
+- Refactoring
 
 ### 2.0.1
 - update README
