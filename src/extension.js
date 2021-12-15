@@ -579,27 +579,31 @@ function activate(context) {
   });
 
   registerCommand(`LineNumber.CopyWithoutPathNoFormat`, () => {
-    mainCopy(`WithoutPathNoFormat`);
+    mainCopy(`CopyWithoutPathNoFormat`);
   });
 
   registerCommand(`LineNumber.CopyWithoutPathDeleteIndent`, () => {
-    mainCopy(`WithoutPathDeleteIndent`);
+    mainCopy(`CopyWithoutPathDeleteIndent`);
   });
 
   registerCommand(`LineNumber.CopyWithFullPathFilenameNoFormat`, () => {
-    mainCopy(`WithFullPathNoFormat`);
+    mainCopy(`CopyWithFullPathNoFormat`);
   });
 
   registerCommand(`LineNumber.CopyWithFullPathFilenameDeleteIndent`, () => {
-    mainCopy(`WithFullPathDeleteIndent`);
+    mainCopy(`CopyWithFullPathDeleteIndent`);
   });
 
   registerCommand(`LineNumber.CopyWithFilenameNoFormat`, () => {
-    mainCopy(`WithFilenameNoFormat`);
+    mainCopy(`CopyWithFilenameNoFormat`);
   });
 
   registerCommand(`LineNumber.CopyWithFilenameDeleteIndent`, () => {
-    mainCopy(`WithFilenameDeleteIndent`);
+    mainCopy(`CopyWithFilenameDeleteIndent`);
+  });
+
+  registerCommand(`LineNumber.CopyDeleteLineNumber`, () => {
+    mainCopy(`CopyDeleteLineNumber`);
   });
 
 }
