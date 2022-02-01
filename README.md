@@ -78,8 +78,8 @@ Released under the [MIT License][license].
 [license]: https://github.com/standard-software/vscode-line-number/blob/master/LICENSE
 
 ## author
-  Satoshi Yamamoto
-  standard.software.net@gmail.com
+    Satoshi Yamamoto  
+    standard.software.net@gmail.com
 
 ## Version
 
