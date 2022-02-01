@@ -244,8 +244,8 @@ function activate(context) {
 
     let select1Edit, select1Copy;
     commandQuickPick([
-      [`Edit`,            ``, () => { select1Edit(); }],
-      [`Copy Clipboard`,  ``, () => { select1Copy(); }],
+      [`Edit ▶`,            ``, () => { select1Edit(); }],
+      [`Copy Clipboard ▶`,  ``, () => { select1Copy(); }],
     ], `Line Number | Select Function`);
 
     select1Edit = () => {
@@ -254,10 +254,10 @@ function activate(context) {
         select2EditInsertInputStart,
         select2EditLineNumberText;
       commandQuickPick([
-        [`Insert File Line Number`, ``, () => { select2EditInsertLineNumber(); }],
-        [`Insert Input Start`,      ``, () => { select2EditInsertInputStart(); }],
-        [`Delete Line Number`,      ``, () => { mainEdit(`DeleteLineNumber`); }],
-        [`Edit Line Number Text`,   ``, () => { select2EditLineNumberText(); }],
+        [`Insert File Line Number ▶`, ``, () => { select2EditInsertLineNumber(); }],
+        [`Insert Input Start ▶`,      ``, () => { select2EditInsertInputStart(); }],
+        [`Delete Line Number`,        ``, () => { mainEdit(`DeleteLineNumber`); }],
+        [`Edit Line Number Text ▶`,   ``, () => { select2EditLineNumberText(); }],
       ], `Line Number | Edit`);
 
       select2EditInsertLineNumber = () => {
@@ -290,10 +290,10 @@ function activate(context) {
         // select2CopyRelativePath,
         select2CopyWithFilename;
       commandQuickPick([
-        [`Copy Without Path`,               ``, () => { select2CopyWithoutPath(); }],
-        [`Copy With FullPath/Filename`,     ``, () => { select2CopyWithFullPath(); }],
+        [`Copy Without Path ▶`,             ``, () => { select2CopyWithoutPath(); }],
+        [`Copy With FullPath/Filename ▶`,   ``, () => { select2CopyWithFullPath(); }],
         // [`With RelativePath/Filename`,      ``, () => { select2CopyRelativePath(); }],
-        [`Copy With Filename`,              ``, () => { select2CopyWithFilename(); }],
+        [`Copy With Filename ▶`,            ``, () => { select2CopyWithFilename(); }],
         [`Copy Delete Line Number`,         ``, () => { mainCopy(`CopyDeleteLineNumber`); }],
       ], `Line Number | Copy Clipboard`);
 

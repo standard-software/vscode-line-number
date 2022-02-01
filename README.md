@@ -77,6 +77,10 @@ Released under the [MIT License][license].
 [marketplace-ratings]: https://marketplace.visualstudio.com/items?itemName=SatoshiYamamoto.vscode-line-number#review-details
 [license]: https://github.com/standard-software/vscode-line-number/blob/master/LICENSE
 
+## author
+  Satoshi Yamamoto
+  standard.software.net@gmail.com
+
 ## Version
 
 ### 2.1.1
@@ -84,6 +88,8 @@ Released under the [MIT License][license].
 - brank -> blank  
   Misspelling.A little embarrassing.  
   But I'm not a native English speaker, so forgive me.
+- Mark hierarchical menus with ▶
+  (If you have a request for a different symbol, please email me or issue)
 
 ### 2.1.0
 2021/12/15(Wed) 00:00
