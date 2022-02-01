@@ -26,7 +26,7 @@ Following commands are available:
 - `Line Number | Edit | Insert Input Start | No Format`
 - `Line Number | Edit | Insert Input Start | Delete Indent`
 - `Line Number | Edit | Delete Line Number`
-- `Line Number | Edit | Edit Line Number Text | Delete Brank Line`
+- `Line Number | Edit | Edit Line Number Text | Delete Blank Line`
 - `Line Number | Edit | Edit Line Number Text | Delete Indent`
 ---
 - `Line Number | Copy | Without Path | No Format`
@@ -50,7 +50,7 @@ Or Select Function
       - `Delete Indent`
     - `Delete Line Number`
     - `Edit Line Number Text`
-      - `Delete Brank Line`
+      - `Delete Blank Line`
       - `Delete Indent`
 
   - `Copy`
@@ -79,7 +79,14 @@ Released under the [MIT License][license].
 
 ## Version
 
+### 2.1.1
+2022/02/01(Tue)
+- brank -> blank  
+  Misspelling.A little embarrassing.  
+  But I'm not a native English speaker, so forgive me.
+
 ### 2.1.0
+2021/12/15(Wed) 00:00
 - update fix Select Range endLine
 - update fix Input LineNumber Digit
 - update fix Delete LineNumber logic
@@ -87,6 +94,7 @@ Released under the [MIT License][license].
 - Refactoring
 
 ### 2.0.1
+2021/12/03(Fri)
 - update README
 
 ### 2.0.0

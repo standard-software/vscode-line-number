@@ -2,7 +2,7 @@
   "name": "vscode-line-number",
   "displayName": "Line Number",
   "description": "Insert and Delete line numbers in text and copy.",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "publisher": "SatoshiYamamoto",
   "author": {
     "name": "Satoshi Yamamoto",
@@ -29,7 +29,7 @@
     "onCommand:LineNumber.EditInsertInputStartNoFormat",
     "onCommand:LineNumber.EditInsertInputStartDeleteIndent",
     "onCommand:LineNumber.EditDeleteLineNumber",
-    "onCommand:LineNumber.EditLineNumberTextDeleteBrankLine",
+    "onCommand:LineNumber.EditLineNumberTextDeleteBlankLine",
     "onCommand:LineNumber.EditLineNumberTextDeleteIndent",
     "onCommand:LineNumber.CopyWithoutPathNoFormat",
     "onCommand:LineNumber.CopyWithoutPathDeleteIndent",
@@ -65,8 +65,8 @@
         "title": "Line Number | Edit | Delete Line Number"
       },
       {
-        "command": "LineNumber.EditLineNumberTextDeleteBrankLine",
-        "title": "Line Number | Edit | Edit Line Number Text | Delete Brank Line"
+        "command": "LineNumber.EditLineNumberTextDeleteBlankLine",
+        "title": "Line Number | Edit | Edit Line Number Text | Delete Blank Line"
       },
       {
         "command": "LineNumber.EditLineNumberTextDeleteIndent",
@@ -102,15 +102,14 @@
       },
       {
         "command": "LineNumber.SelectFunction",
-        "title": "Line Number | Select Function"
+        "title": "Line Number | Select Function ▶"
       }
     ],
     "configuration": {}
   },
   "scripts": {
     "lint": "eslint --fix ./src",
-    "pack": "vsce package",
-    "exinstall": "code --install-extension vscode-line-number-2.1.0.vsix",
+    "pack": "vsce package && code --install-extension vscode-line-number-2.1.1.vsix",
     "": ""
   },
   "devDependencies": {

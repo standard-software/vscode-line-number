@@ -276,7 +276,7 @@ function activate(context) {
 
       select2EditLineNumberText = () => {
         commandQuickPick([
-          [`Delete Brank Line`, ``, () => { mainEdit(`DeleteBrankLine`); }],
+          [`Delete Blank Line`, ``, () => { mainEdit(`DeleteBlankLine`); }],
           [`Delete Indent`,     ``, () => { mainEdit(`DeleteIndent`); }],
         ], `Line Number | Edit | Edit Line Number Text`);
       };
@@ -437,7 +437,7 @@ function activate(context) {
       });
     } break;
 
-    case `DeleteBrankLine`: {
+    case `DeleteBlankLine`: {
       const delimiter = `: `;
       const trimDelimiter = _trim(delimiter);
       editor.edit(editBuilder => {
@@ -570,8 +570,8 @@ function activate(context) {
     mainEdit(`DeleteLineNumber`);
   });
 
-  registerCommand(`LineNumber.EditLineNumberTextDeleteBrankLine`, () => {
-    mainEdit(`DeleteBrankLine`);
+  registerCommand(`LineNumber.EditLineNumberTextDeleteBlankLine`, () => {
+    mainEdit(`DeleteBlankLine`);
   });
 
   registerCommand(`LineNumber.EditLineNumberTextDeleteIndent`, () => {
