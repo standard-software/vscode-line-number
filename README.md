@@ -40,29 +40,40 @@ Following commands are available:
 
 Or Select Function
 
-- `Line Number | Select Function`
-  - `Edit`
-    - `Insert File Line Number`
+- `Line Number | Select Function >>`
+  - `Edit >>`
+    - `Insert File Line Number >>`
       - `No Format`
       - `Delete Indent`
-    - `Insert Input Start`
+    - `Insert Input Start Number >>`
       - `No Format`
       - `Delete Indent`
     - `Delete Line Number`
-    - `Edit Line Number Text`
+    - `Edit Line Number Text >>`
       - `Delete Blank Line`
       - `Delete Indent`
 
-  - `Copy`
-    - `Without Path`
+  - `Copy >>`
+    - `Without Path >>`
       - `No Format`
       - `Delete Indent`
-    - `With FullPath/Filename`
+    - `With FullPath/Filename >>`
       - `No Format`
       - `Delete Indent`
-    - `With Filename`
+    - `With Filename >>`
       - `No Format`
       - `Delete Indent`
+
+## Setting
+
+settings.json
+
+```json
+{
+  "LineNumber.subMenuChar": ">>",
+  :
+}
+```
 
 ## License
 
@@ -83,12 +94,17 @@ Released under the [MIT License][license].
 
 ## Version
 
+### 2.2.0
+2022/04/10(Sun)
+- Sub Menu Char "▸"
+  - Changeable in the settings
+
 ### 2.1.1
 2022/02/01(Tue)
 - brank -> blank  
   Misspelling.A little embarrassing.  
   But I'm not a native English speaker, so forgive me.
-- Mark hierarchical menus with ▶
+- Mark hierarchical menus with "▶"
   (If you have a request for a different symbol, please email me or issue)
 
 ### 2.1.0

@@ -2,7 +2,7 @@
   "name": "vscode-line-number",
   "displayName": "Line Number",
   "description": "Insert and Delete line numbers in text and copy.",
-  "version": "2.1.1",
+  "version": "2.2.0",
   "publisher": "SatoshiYamamoto",
   "author": {
     "name": "Satoshi Yamamoto",
@@ -102,10 +102,19 @@
       },
       {
         "command": "LineNumber.SelectFunction",
-        "title": "Line Number | Select Function ▶"
+        "title": "Line Number | Select Function"
       }
     ],
-    "configuration": {}
+    "configuration": {
+      "type": "object",
+      "title": "LineNumber",
+      "properties": {
+        "LineNumber.subMenuChar": {
+          "type": "string",
+          "default": "▸"
+        }
+      }
+    }
   },
   "scripts": {
     "lint": "eslint --fix ./src",
