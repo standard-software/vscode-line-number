@@ -98,6 +98,7 @@ Released under the [MIT License][license].
 2022/04/17(Sun)
 - Sub Menu Char "▸"
   - Changeable in the settings
+  - show it in the description
 - Add Copy Header RelativePath/FileName
 
 ### 2.1.1
