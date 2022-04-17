@@ -257,7 +257,7 @@ function activate(context) {
 
   registerCommand(`LineNumber.SelectFunction`, () => {
 
-    let select1Copy;
+    // let select1Copy;
     commandQuickPick([
       [`Edit`,   `${subMenuChar}`, () => { commandQuickPick([
         [`Insert File Line Number`,   `${subMenuChar}`, () => { commandQuickPick([
@@ -275,52 +275,27 @@ function activate(context) {
         ], `Line Number | Edit | Edit Line Number Text`); }],
       ], `Line Number | Edit`); }],
 
-      [`Copy`,   `${subMenuChar}`, () => { select1Copy(); }],
-    ], `Line Number | Select Function`);
-
-    select1Copy = () => {
-      let
-        select2CopyWithoutPath,
-        select2CopyWithFullPath,
-        select2CopyRelativePath,
-        select2CopyWithFilename;
-      commandQuickPick([
-        [`Copy No Header`,                    `${subMenuChar}`, () => { select2CopyWithoutPath(); }],
-        [`Copy Header FileName`,              `${subMenuChar}`, () => { select2CopyWithFilename(); }],
-        [`Copy Header FullPath/FileName`,     `${subMenuChar}`, () => { select2CopyWithFullPath(); }],
-        [`Copy Header RelativePath/FileName`, `${subMenuChar}`, () => { select2CopyRelativePath(); }],
+      [`Copy With LineNumber`,   `${subMenuChar}`, () => { commandQuickPick([
+        [`Copy No Header`,                    `${subMenuChar}`, () => { commandQuickPick([
+          [`No Format`,                       ``,               () => { mainCopy(`CopyWithoutPathNoFormat`); }],
+          [`Delete Indent`,                   ``,               () => { mainCopy(`CopyWithoutPathDeleteIndent`); }],
+        ], `Line Number | Copy | Without Path`); }],
+        [`Copy Header FileName`,              `${subMenuChar}`, () => { commandQuickPick([
+          [`No Format`,                       ``,               () => { mainCopy(`CopyWithFilenameNoFormat`); }],
+          [`Delete Indent`,                   ``,               () => { mainCopy(`CopyWithFilenameDeleteIndent`); }],
+        ], `Line Number | Copy | With Filename`); }],
+        [`Copy Header FullPath/FileName`,     `${subMenuChar}`, () => { commandQuickPick([
+          [`No Format`,                       ``,               () => { mainCopy(`CopyWithFullPathNoFormat`); }],
+          [`Delete Indent`,                   ``,               () => { mainCopy(`CopyWithFullPathDeleteIndent`); }],
+        ], `Line Number | Copy | With FullPath/Filename`); }],
+        [`Copy Header RelativePath/FileName`, `${subMenuChar}`, () => { commandQuickPick([
+          [`No Format`,                       ``,               () => { mainCopy(`CopyWithRelativePathNoFormat`); }],
+          [`Delete Indent`,                   ``,               () => { mainCopy(`CopyWithRelativePathDeleteIndent`); }],
+        ], `Line Number | Copy | With RelativePath`); }],
         [`Copy Delete Line Number`,           ``,               () => { mainCopy(`CopyDeleteLineNumber`); }],
-      ], `Line Number | Copy`);
+      ], `Line Number | Copy`); }],
 
-      select2CopyWithoutPath = () => {
-        commandQuickPick([
-          [`No Format`,           ``, () => { mainCopy(`CopyWithoutPathNoFormat`); }],
-          [`Delete Indent`,       ``, () => { mainCopy(`CopyWithoutPathDeleteIndent`); }],
-        ], `Line Number | Copy | Without Path`);
-      };
-
-      select2CopyWithFilename = () => {
-        commandQuickPick([
-          [`No Format`,           ``, () => { mainCopy(`CopyWithFilenameNoFormat`); }],
-          [`Delete Indent`,       ``, () => { mainCopy(`CopyWithFilenameDeleteIndent`); }],
-        ], `Line Number | Copy | With Filename`);
-      };
-
-      select2CopyWithFullPath = () => {
-        commandQuickPick([
-          [`No Format`,           ``, () => { mainCopy(`CopyWithFullPathNoFormat`); }],
-          [`Delete Indent`,       ``, () => { mainCopy(`CopyWithFullPathDeleteIndent`); }],
-        ], `Line Number | Copy | With FullPath/Filename`);
-      };
-
-      select2CopyRelativePath = () => {
-        commandQuickPick([
-          [`No Format`,           ``, () => { mainCopy(`CopyWithRelativePathNoFormat`); }],
-          [`Delete Indent`,       ``, () => { mainCopy(`CopyWithRelativePathDeleteIndent`); }],
-        ], `Line Number | Copy | With RelativePath`);
-      };
-
-    };
+    ], `Line Number | Select Function`);
 
   });
 
