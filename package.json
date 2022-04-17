@@ -2,7 +2,7 @@
   "name": "vscode-line-number",
   "displayName": "Line Number",
   "description": "Insert and Delete line numbers in text and copy.",
-  "version": "2.2.0",
+  "version": "3.0.0",
   "publisher": "SatoshiYamamoto",
   "author": {
     "name": "Satoshi Yamamoto",
@@ -35,10 +35,16 @@
     "onCommand:LineNumber.CopyNoHeaderDeleteIndent",
     "onCommand:LineNumber.CopyFileNameNoFormat",
     "onCommand:LineNumber.CopyFileNameDeleteIndent",
+    "onCommand:LineNumber.CopyFileNameDeleteBlankLine",
+    "onCommand:LineNumber.CopyFileNameDeleteIndentBlankLine",
     "onCommand:LineNumber.CopyFullPathNoFormat",
     "onCommand:LineNumber.CopyFullPathDeleteIndent",
+    "onCommand:LineNumber.CopyFullPathDeleteBlankLine",
+    "onCommand:LineNumber.CopyFullPathDeleteIndentBlankLine",
     "onCommand:LineNumber.CopyRelativePathNoFormat",
     "onCommand:LineNumber.CopyRelativePathDeleteIndent",
+    "onCommand:LineNumber.CopyRelativePathDeleteBlankLine",
+    "onCommand:LineNumber.CopyRelativePathDeleteIndentBlankLine",
     "onCommand:LineNumber.CopyDeleteLineNumber",
 
     "onCommand:LineNumber.SelectFunction"
@@ -91,6 +97,14 @@
         "title": "Line Number | Copy With LineNumber | Header Filename | Delete Indent"
       },
       {
+        "command": "LineNumber.CopyFileNameDeleteBlankLine",
+        "title": "Line Number | Copy With LineNumber | Header Filename | Delete BlankLine"
+      },
+      {
+        "command": "LineNumber.CopyFileNameDeleteIndentBlankLine",
+        "title": "Line Number | Copy With LineNumber | Header Filename | Delete Indent and BlankLine"
+      },
+      {
         "command": "LineNumber.CopyFullPathNoFormat",
         "title": "Line Number | Copy With LineNumber | Header FullPath | No Format"
       },
@@ -99,12 +113,28 @@
         "title": "Line Number | Copy With LineNumber | Header FullPath | Delete Indent"
       },
       {
+        "command": "LineNumber.CopyFullPathDeleteBlankLine",
+        "title": "Line Number | Copy With LineNumber | Header FullPath | Delete BlankLine"
+      },
+      {
+        "command": "LineNumber.CopyFullPathDeleteIndentBlankLine",
+        "title": "Line Number | Copy With LineNumber | Header FullPath | Delete Indent and BlankLine"
+      },
+      {
         "command": "LineNumber.CopyRelativePathNoFormat",
         "title": "Line Number | Copy With LineNumber | Header RelativePath | No Format"
       },
       {
         "command": "LineNumber.CopyRelativePathDeleteIndent",
         "title": "Line Number | Copy With LineNumber | Header RelativePath | Delete Indent"
+      },
+      {
+        "command": "LineNumber.CopyRelativePathDeleteBlankLine",
+        "title": "Line Number | Copy With LineNumber | Header RelativePath | Delete BlankLine"
+      },
+      {
+        "command": "LineNumber.CopyRelativePathDeleteIndentBlankLine",
+        "title": "Line Number | Copy With LineNumber | Header RelativePath | Delete Indent and BlankLine"
       },
       {
         "command": "LineNumber.CopyDeleteLineNumber",
@@ -128,7 +158,7 @@
   },
   "scripts": {
     "lint": "eslint --fix ./src",
-    "pack": "vsce package && code --install-extension vscode-line-number-2.2.0.vsix",
+    "pack": "vsce package && code --install-extension vscode-line-number-3.0.0.vsix",
     "": ""
   },
   "devDependencies": {

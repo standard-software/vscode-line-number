@@ -104,6 +104,13 @@ Released under the [MIT License][license].
 
 ## Version
 
+### 3.0.0
+2022/04/17(Sun)
+- Add Copy Function
+  - Delete BlankLine
+  - Delete Indent and BlankLine
+- Refactoring
+
 ### 2.2.0
 2022/04/17(Sun)
 - Sub Menu Char "▸"
