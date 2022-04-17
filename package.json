@@ -118,7 +118,7 @@
   },
   "scripts": {
     "lint": "eslint --fix ./src",
-    "pack": "vsce package && code --install-extension vscode-line-number-2.1.1.vsix",
+    "pack": "vsce package && code --install-extension vscode-line-number-2.2.0.vsix",
     "": ""
   },
   "devDependencies": {

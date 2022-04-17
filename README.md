@@ -95,9 +95,10 @@ Released under the [MIT License][license].
 ## Version
 
 ### 2.2.0
-2022/04/10(Sun)
+2022/04/17(Sun)
 - Sub Menu Char "▸"
   - Changeable in the settings
+- Add Copy Header RelativePath/FileName
 
 ### 2.1.1
 2022/02/01(Tue)

@@ -207,18 +207,18 @@ const copyTextHeaderFullPath = (editor) => {
   );
 };
 
-// const copyTextHeaderRelativePath = (editor) => {
-//   const lineBreak = getDefaultLineBreak(editor);
+const copyTextHeaderRelativePath = (editor) => {
+  const lineBreak = getDefaultLineBreak(editor);
 
-//   const uri = editor.document.uri;
-//   const relativePath = vscode.workspace.asRelativePath(
-//     uri
-//   ).replaceAll(`\\`, `/`);
-//   return (
-//     relativePath +
-//     lineBreak
-//   );
-// };
+  const uri = editor.document.uri;
+  const relativePath = vscode.workspace.asRelativePath(
+    uri
+  );
+  return (
+    relativePath +
+    lineBreak
+  );
+};
 
 const copyTextHeaderFilename = (editor) => {
   const lineBreak = getDefaultLineBreak(editor);
@@ -257,87 +257,67 @@ function activate(context) {
 
   registerCommand(`LineNumber.SelectFunction`, () => {
 
-    let select1Edit, select1Copy;
+    let select1Copy;
     commandQuickPick([
-      [`Edit ${subMenuChar}`,   ``, () => { select1Edit(); }],
-      [`Copy ${subMenuChar}`,   ``, () => { select1Copy(); }],
+      [`Edit`,   `${subMenuChar}`, () => { commandQuickPick([
+        [`Insert File Line Number`,   `${subMenuChar}`, () => { commandQuickPick([
+          [`No Format`,               ``,               () => { mainEdit(`InsertNoFormat`); }],
+          [`Delete Indent`,           ``,               () => { mainEdit(`InsertDeleteIndent`); }],
+        ], `Line Number | Edit | Insert File Line Number`); }],
+        [`Insert Input Start Number`, `${subMenuChar}`, () => { commandQuickPick([
+          [`No Format`,               ``,               () => { mainEdit(`InputNoFormat`); }],
+          [`Delete Indent`,           ``,               () => { mainEdit(`InputDeleteIndent`); }],
+        ], `Line Number | Edit | Insert Input Start`); }],
+        [`Delete Line Number`,        ``,               () => { mainEdit(`DeleteLineNumber`); }],
+        [`Edit Line Number Text`,     `${subMenuChar}`, () => { commandQuickPick([
+          [`Delete Blank Line`,       ``,               () => { mainEdit(`DeleteBlankLine`); }],
+          [`Delete Indent`,           ``,               () => { mainEdit(`DeleteIndent`); }],
+        ], `Line Number | Edit | Edit Line Number Text`); }],
+      ], `Line Number | Edit`); }],
+
+      [`Copy`,   `${subMenuChar}`, () => { select1Copy(); }],
     ], `Line Number | Select Function`);
-
-    select1Edit = () => {
-      let
-        select2EditInsertLineNumber,
-        select2EditInsertInputStart,
-        select2EditLineNumberText;
-      commandQuickPick([
-        [`Insert File Line Number ${subMenuChar}`,    ``, () => { select2EditInsertLineNumber(); }],
-        [`Insert Input Start Number ${subMenuChar}`,  ``, () => { select2EditInsertInputStart(); }],
-        [`Delete Line Number`,                        ``, () => { mainEdit(`DeleteLineNumber`); }],
-        [`Edit Line Number Text ${subMenuChar}`,      ``, () => { select2EditLineNumberText(); }],
-      ], `Line Number | Edit`);
-
-      select2EditInsertLineNumber = () => {
-        commandQuickPick([
-          [`No Format`,       ``, () => { mainEdit(`InsertNoFormat`); }],
-          [`Delete Indent`,   ``, () => { mainEdit(`InsertDeleteIndent`); }],
-        ], `Line Number | Edit | Insert File Line Number`);
-      };
-
-      select2EditInsertInputStart = () => {
-        commandQuickPick([
-          [`No Format`,       ``, () => { mainEdit(`InputNoFormat`); }],
-          [`Delete Indent`,   ``, () => { mainEdit(`InputDeleteIndent`); }],
-        ], `Line Number | Edit | Insert Input Start`);
-      };
-
-      select2EditLineNumberText = () => {
-        commandQuickPick([
-          [`Delete Blank Line`, ``, () => { mainEdit(`DeleteBlankLine`); }],
-          [`Delete Indent`,     ``, () => { mainEdit(`DeleteIndent`); }],
-        ], `Line Number | Edit | Edit Line Number Text`);
-      };
-
-    };
 
     select1Copy = () => {
       let
         select2CopyWithoutPath,
         select2CopyWithFullPath,
-        // select2CopyRelativePath,
+        select2CopyRelativePath,
         select2CopyWithFilename;
       commandQuickPick([
-        [`Copy Without Path ${subMenuChar}`,                      ``, () => { select2CopyWithoutPath(); }],
-        [`Copy With FullPath/Filename ${subMenuChar}`,            ``, () => { select2CopyWithFullPath(); }],
-        // [`Copy With RelativePath ${subMenuChar}`, ``, () => { select2CopyRelativePath(); }],
-        [`Copy With Filename ${subMenuChar}`,     ``, () => { select2CopyWithFilename(); }],
-        [`Copy Delete Line Number`,                               ``, () => { mainCopy(`CopyDeleteLineNumber`); }],
+        [`Copy No Header`,                    `${subMenuChar}`, () => { select2CopyWithoutPath(); }],
+        [`Copy Header FileName`,              `${subMenuChar}`, () => { select2CopyWithFilename(); }],
+        [`Copy Header FullPath/FileName`,     `${subMenuChar}`, () => { select2CopyWithFullPath(); }],
+        [`Copy Header RelativePath/FileName`, `${subMenuChar}`, () => { select2CopyRelativePath(); }],
+        [`Copy Delete Line Number`,           ``,               () => { mainCopy(`CopyDeleteLineNumber`); }],
       ], `Line Number | Copy`);
 
       select2CopyWithoutPath = () => {
         commandQuickPick([
-          [`Original`,            ``, () => { mainCopy(`CopyWithoutPathNoFormat`); }],
+          [`No Format`,           ``, () => { mainCopy(`CopyWithoutPathNoFormat`); }],
           [`Delete Indent`,       ``, () => { mainCopy(`CopyWithoutPathDeleteIndent`); }],
         ], `Line Number | Copy | Without Path`);
       };
 
+      select2CopyWithFilename = () => {
+        commandQuickPick([
+          [`No Format`,           ``, () => { mainCopy(`CopyWithFilenameNoFormat`); }],
+          [`Delete Indent`,       ``, () => { mainCopy(`CopyWithFilenameDeleteIndent`); }],
+        ], `Line Number | Copy | With Filename`);
+      };
+
       select2CopyWithFullPath = () => {
         commandQuickPick([
-          [`Original`,            ``, () => { mainCopy(`CopyWithFullPathNoFormat`); }],
+          [`No Format`,           ``, () => { mainCopy(`CopyWithFullPathNoFormat`); }],
           [`Delete Indent`,       ``, () => { mainCopy(`CopyWithFullPathDeleteIndent`); }],
         ], `Line Number | Copy | With FullPath/Filename`);
       };
 
-      // select2CopyRelativePath = () => {
-      //   commandQuickPick([
-      //     [`Original`,               ``, () => { mainCopy(`CopyWithRelativePathNoFormat`); }],
-      //     [`Delete Indent`,          ``, () => { mainCopy(`CopyWithRelativePathDeleteIndent`); }],
-      //   ], `Line Number | Copy | With RelativePath`);
-      // };
-
-      select2CopyWithFilename = () => {
+      select2CopyRelativePath = () => {
         commandQuickPick([
-          [`Original`,            ``, () => { mainCopy(`CopyWithFilenameNoFormat`); }],
-          [`Delete Indent`,       ``, () => { mainCopy(`CopyWithFilenameDeleteIndent`); }],
-        ], `Line Number | Copy | With Filename`);
+          [`No Format`,           ``, () => { mainCopy(`CopyWithRelativePathNoFormat`); }],
+          [`Delete Indent`,       ``, () => { mainCopy(`CopyWithRelativePathDeleteIndent`); }],
+        ], `Line Number | Copy | With RelativePath`);
       };
 
     };
@@ -534,19 +514,19 @@ function activate(context) {
       vscode.env.clipboard.writeText(copyText);
     } break;
 
-    // case `CopyWithRelativePathNoFormat`: {
-    //   const copyText =
-    //     copyTextHeaderRelativePath(editor) +
-    //     lineNumberTextNoFormat(editor);
-    //   vscode.env.clipboard.writeText(copyText);
-    // } break;
+    case `CopyWithRelativePathNoFormat`: {
+      const copyText =
+        copyTextHeaderRelativePath(editor) +
+        lineNumberTextNoFormat(editor);
+      vscode.env.clipboard.writeText(copyText);
+    } break;
 
-    // case `CopyWithRelativePathDeleteIndent`: {
-    //   const copyText =
-    //     copyTextHeaderRelativePath(editor) +
-    //     lineNumberTextDeleteIndent(editor);
-    //   vscode.env.clipboard.writeText(copyText);
-    // } break;
+    case `CopyWithRelativePathDeleteIndent`: {
+      const copyText =
+        copyTextHeaderRelativePath(editor) +
+        lineNumberTextDeleteIndent(editor);
+      vscode.env.clipboard.writeText(copyText);
+    } break;
 
     case `CopyWithFilenameNoFormat`: {
       const copyText =
