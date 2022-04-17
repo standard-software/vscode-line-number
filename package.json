@@ -2,7 +2,7 @@
   "name": "vscode-line-number",
   "displayName": "Line Number",
   "description": "Insert and Delete line numbers in text and copy.",
-  "version": "3.0.0",
+  "version": "2.3.0",
   "publisher": "SatoshiYamamoto",
   "author": {
     "name": "Satoshi Yamamoto",
@@ -31,21 +31,39 @@
     "onCommand:LineNumber.EditDeleteLineNumber",
     "onCommand:LineNumber.EditLineNumberTextDeleteBlankLine",
     "onCommand:LineNumber.EditLineNumberTextDeleteIndent",
-    "onCommand:LineNumber.CopyNoHeaderNoFormat",
-    "onCommand:LineNumber.CopyNoHeaderDeleteIndent",
-    "onCommand:LineNumber.CopyFileNameNoFormat",
-    "onCommand:LineNumber.CopyFileNameDeleteIndent",
-    "onCommand:LineNumber.CopyFileNameDeleteBlankLine",
-    "onCommand:LineNumber.CopyFileNameDeleteIndentBlankLine",
-    "onCommand:LineNumber.CopyFullPathNoFormat",
-    "onCommand:LineNumber.CopyFullPathDeleteIndent",
-    "onCommand:LineNumber.CopyFullPathDeleteBlankLine",
-    "onCommand:LineNumber.CopyFullPathDeleteIndentBlankLine",
-    "onCommand:LineNumber.CopyRelativePathNoFormat",
-    "onCommand:LineNumber.CopyRelativePathDeleteIndent",
-    "onCommand:LineNumber.CopyRelativePathDeleteBlankLine",
-    "onCommand:LineNumber.CopyRelativePathDeleteIndentBlankLine",
-    "onCommand:LineNumber.CopyDeleteLineNumber",
+    "onCommand:LineNumber.CopyLineNumberNoHeaderNoFormat",
+    "onCommand:LineNumber.CopyLineNumberNoHeaderDeleteIndent",
+    "onCommand:LineNumber.CopyLineNumberNoHeaderDeleteBlankLine",
+    "onCommand:LineNumber.CopyLineNumberNoHeaderDeleteIndentBlankLine",
+    "onCommand:LineNumber.CopyLineNumberFileNameNoFormat",
+    "onCommand:LineNumber.CopyLineNumberFileNameDeleteIndent",
+    "onCommand:LineNumber.CopyLineNumberFileNameDeleteBlankLine",
+    "onCommand:LineNumber.CopyLineNumberFileNameDeleteIndentBlankLine",
+    "onCommand:LineNumber.CopyLineNumberFullPathNoFormat",
+    "onCommand:LineNumber.CopyLineNumberFullPathDeleteIndent",
+    "onCommand:LineNumber.CopyLineNumberFullPathDeleteBlankLine",
+    "onCommand:LineNumber.CopyLineNumberFullPathDeleteIndentBlankLine",
+    "onCommand:LineNumber.CopyLineNumberRelativePathNoFormat",
+    "onCommand:LineNumber.CopyLineNumberRelativePathDeleteIndent",
+    "onCommand:LineNumber.CopyLineNumberRelativePathDeleteBlankLine",
+    "onCommand:LineNumber.CopyLineNumberRelativePathDeleteIndentBlankLine",
+    "onCommand:LineNumber.CopyNoLineNumberNoHeaderNoFormat",
+    "onCommand:LineNumber.CopyNoLineNumberNoHeaderDeleteIndent",
+    "onCommand:LineNumber.CopyNoLineNumberNoHeaderDeleteBlankLine",
+    "onCommand:LineNumber.CopyNoLineNumberNoHeaderDeleteIndentBlankLine",
+    "onCommand:LineNumber.CopyNoLineNumberFileNameNoFormat",
+    "onCommand:LineNumber.CopyNoLineNumberFileNameDeleteIndent",
+    "onCommand:LineNumber.CopyNoLineNumberFileNameDeleteBlankLine",
+    "onCommand:LineNumber.CopyNoLineNumberFileNameDeleteIndentBlankLine",
+    "onCommand:LineNumber.CopyNoLineNumberFullPathNoFormat",
+    "onCommand:LineNumber.CopyNoLineNumberFullPathDeleteIndent",
+    "onCommand:LineNumber.CopyNoLineNumberFullPathDeleteBlankLine",
+    "onCommand:LineNumber.CopyNoLineNumberFullPathDeleteIndentBlankLine",
+    "onCommand:LineNumber.CopyNoLineNumberRelativePathNoFormat",
+    "onCommand:LineNumber.CopyNoLineNumberRelativePathDeleteIndent",
+    "onCommand:LineNumber.CopyNoLineNumberRelativePathDeleteBlankLine",
+    "onCommand:LineNumber.CopyNoLineNumberRelativePathDeleteIndentBlankLine",
+    "onCommand:LineNumber.CopyNoLineNumberDeleteLineNumber",
 
     "onCommand:LineNumber.SelectFunction"
   ],
@@ -81,63 +99,135 @@
         "title": "Line Number | Edit | Edit LineNumber Text | Delete Indent"
       },
       {
-        "command": "LineNumber.CopyNoHeaderNoFormat",
+        "command": "LineNumber.CopyLineNumberNoHeaderNoFormat",
         "title": "Line Number | Copy With LineNumber | No Header | No Format"
       },
       {
-        "command": "LineNumber.CopyNoHeaderDeleteIndent",
+        "command": "LineNumber.CopyLineNumberNoHeaderDeleteIndent",
         "title": "Line Number | Copy With LineNumber | No Header | Delete Indent"
       },
       {
-        "command": "LineNumber.CopyFileNameNoFormat",
-        "title": "Line Number | Copy With LineNumber | Header Filename | No Format"
+        "command": "LineNumber.CopyLineNumberNoHeaderDeleteBlankLine",
+        "title": "Line Number | Copy With LineNumber | No Header | Delete BlankLine"
       },
       {
-        "command": "LineNumber.CopyFileNameDeleteIndent",
-        "title": "Line Number | Copy With LineNumber | Header Filename | Delete Indent"
+        "command": "LineNumber.CopyLineNumberNoHeaderDeleteIndentBlankLine",
+        "title": "Line Number | Copy With LineNumber | No Header | Delete Indent and BlankLine"
       },
       {
-        "command": "LineNumber.CopyFileNameDeleteBlankLine",
-        "title": "Line Number | Copy With LineNumber | Header Filename | Delete BlankLine"
+        "command": "LineNumber.CopyLineNumberFileNameNoFormat",
+        "title": "Line Number | Copy With LineNumber | Header FileName | No Format"
       },
       {
-        "command": "LineNumber.CopyFileNameDeleteIndentBlankLine",
-        "title": "Line Number | Copy With LineNumber | Header Filename | Delete Indent and BlankLine"
+        "command": "LineNumber.CopyLineNumberFileNameDeleteIndent",
+        "title": "Line Number | Copy With LineNumber | Header FileName | Delete Indent"
       },
       {
-        "command": "LineNumber.CopyFullPathNoFormat",
+        "command": "LineNumber.CopyLineNumberFileNameDeleteBlankLine",
+        "title": "Line Number | Copy With LineNumber | Header FileName | Delete BlankLine"
+      },
+      {
+        "command": "LineNumber.CopyLineNumberFileNameDeleteIndentBlankLine",
+        "title": "Line Number | Copy With LineNumber | Header FileName | Delete Indent and BlankLine"
+      },
+      {
+        "command": "LineNumber.CopyLineNumberFullPathNoFormat",
         "title": "Line Number | Copy With LineNumber | Header FullPath | No Format"
       },
       {
-        "command": "LineNumber.CopyFullPathDeleteIndent",
+        "command": "LineNumber.CopyLineNumberFullPathDeleteIndent",
         "title": "Line Number | Copy With LineNumber | Header FullPath | Delete Indent"
       },
       {
-        "command": "LineNumber.CopyFullPathDeleteBlankLine",
+        "command": "LineNumber.CopyLineNumberFullPathDeleteBlankLine",
         "title": "Line Number | Copy With LineNumber | Header FullPath | Delete BlankLine"
       },
       {
-        "command": "LineNumber.CopyFullPathDeleteIndentBlankLine",
+        "command": "LineNumber.CopyLineNumberFullPathDeleteIndentBlankLine",
         "title": "Line Number | Copy With LineNumber | Header FullPath | Delete Indent and BlankLine"
       },
       {
-        "command": "LineNumber.CopyRelativePathNoFormat",
+        "command": "LineNumber.CopyLineNumberRelativePathNoFormat",
         "title": "Line Number | Copy With LineNumber | Header RelativePath | No Format"
       },
       {
-        "command": "LineNumber.CopyRelativePathDeleteIndent",
+        "command": "LineNumber.CopyLineNumberRelativePathDeleteIndent",
         "title": "Line Number | Copy With LineNumber | Header RelativePath | Delete Indent"
       },
       {
-        "command": "LineNumber.CopyRelativePathDeleteBlankLine",
+        "command": "LineNumber.CopyLineNumberRelativePathDeleteBlankLine",
         "title": "Line Number | Copy With LineNumber | Header RelativePath | Delete BlankLine"
       },
       {
-        "command": "LineNumber.CopyRelativePathDeleteIndentBlankLine",
+        "command": "LineNumber.CopyLineNumberRelativePathDeleteIndentBlankLine",
         "title": "Line Number | Copy With LineNumber | Header RelativePath | Delete Indent and BlankLine"
       },
       {
-        "command": "LineNumber.CopyDeleteLineNumber",
+        "command": "LineNumber.CopyNoLineNumberNoHeaderNoFormat",
+        "title": "Line Number | Copy No LineNumber | No Header | No Format"
+      },
+      {
+        "command": "LineNumber.CopyNoLineNumberNoHeaderDeleteIndent",
+        "title": "Line Number | Copy No LineNumber | No Header | Delete Indent"
+      },
+      {
+        "command": "LineNumber.CopyNoLineNumberNoHeaderDeleteBlankLine",
+        "title": "Line Number | Copy No LineNumber | No Header | Delete BlankLine"
+      },
+      {
+        "command": "LineNumber.CopyNoLineNumberNoHeaderDeleteIndentBlankLine",
+        "title": "Line Number | Copy No LineNumber | No Header | Delete Indent and BlankLine"
+      },
+      {
+        "command": "LineNumber.CopyNoLineNumberFileNameNoFormat",
+        "title": "Line Number | Copy No LineNumber | Header FileName | No Format"
+      },
+      {
+        "command": "LineNumber.CopyNoLineNumberFileNameDeleteIndent",
+        "title": "Line Number | Copy No LineNumber | Header FileName | Delete Indent"
+      },
+      {
+        "command": "LineNumber.CopyNoLineNumberFileNameDeleteBlankLine",
+        "title": "Line Number | Copy No LineNumber | Header FileName | Delete BlankLine"
+      },
+      {
+        "command": "LineNumber.CopyNoLineNumberFileNameDeleteIndentBlankLine",
+        "title": "Line Number | Copy No LineNumber | Header FileName | Delete Indent and BlankLine"
+      },
+      {
+        "command": "LineNumber.CopyNoLineNumberFullPathNoFormat",
+        "title": "Line Number | Copy No LineNumber | Header FullPath | No Format"
+      },
+      {
+        "command": "LineNumber.CopyNoLineNumberFullPathDeleteIndent",
+        "title": "Line Number | Copy No LineNumber | Header FullPath | Delete Indent"
+      },
+      {
+        "command": "LineNumber.CopyNoLineNumberFullPathDeleteBlankLine",
+        "title": "Line Number | Copy No LineNumber | Header FullPath | Delete BlankLine"
+      },
+      {
+        "command": "LineNumber.CopyNoLineNumberFullPathDeleteIndentBlankLine",
+        "title": "Line Number | Copy No LineNumber | Header FullPath | Delete Indent and BlankLine"
+      },
+      {
+        "command": "LineNumber.CopyNoLineNumberRelativePathNoFormat",
+        "title": "Line Number | Copy No LineNumber | Header RelativePath | No Format"
+      },
+      {
+        "command": "LineNumber.CopyNoLineNumberRelativePathDeleteIndent",
+        "title": "Line Number | Copy No LineNumber | Header RelativePath | Delete Indent"
+      },
+      {
+        "command": "LineNumber.CopyNoLineNumberRelativePathDeleteBlankLine",
+        "title": "Line Number | Copy No LineNumber | Header RelativePath | Delete BlankLine"
+      },
+      {
+        "command": "LineNumber.CopyNoLineNumberRelativePathDeleteIndentBlankLine",
+        "title": "Line Number | Copy No LineNumber | Header RelativePath | Delete Indent and BlankLine"
+      },
+      {
+        "command": "LineNumber.CopyLineNumberDeleteLineNumber",
         "title": "Line Number | Copy Delete LineNumber"
       },
       {
@@ -158,7 +248,7 @@
   },
   "scripts": {
     "lint": "eslint --fix ./src",
-    "pack": "vsce package && code --install-extension vscode-line-number-3.0.0.vsix",
+    "pack": "vsce package && code --install-extension vscode-line-number-2.3.0.vsix",
     "": ""
   },
   "devDependencies": {

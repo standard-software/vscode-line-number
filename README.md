@@ -31,15 +31,39 @@ Following commands are available:
 ---
 - `Line Number | Copy With LineNumber | No Header | No Format`
 - `Line Number | Copy With LineNumber | No Header | Delete Indent`
-- `Line Number | Copy With LineNumber | Header Filename | No Format`
-- `Line Number | Copy With LineNumber | Header Filename | Delete Indent`
-- `Line Number | Copy With LineNumber | Header FullPath/Filename | No Format`
-- `Line Number | Copy With LineNumber | Header FullPath/Filename | Delete Indent`
-- `Line Number | Copy With LineNumber | Header RelativePath/Filename | No Format`
-- `Line Number | Copy With LineNumber | Header RelativePath/Filename | Delete Indent`
+- `Line Number | Copy With LineNumber | No Header | Delete BlankLine`
+- `Line Number | Copy With LineNumber | No Header | Delete Indent and BlankLine`
+- `Line Number | Copy With LineNumber | Header FileName | No Format`
+- `Line Number | Copy With LineNumber | Header FileName | Delete Indent`
+- `Line Number | Copy With LineNumber | Header FileName | Delete BlankLine`
+- `Line Number | Copy With LineNumber | Header FileName | Delete Indent and BlankLine`
+- `Line Number | Copy With LineNumber | Header FullPath/FileName | No Format`
+- `Line Number | Copy With LineNumber | Header FullPath/FileName | Delete Indent`
+- `Line Number | Copy With LineNumber | Header FullPath/FileName | Delete BlankLine`
+- `Line Number | Copy With LineNumber | Header FullPath/FileName | Delete Indent and BlankLine`
+- `Line Number | Copy With LineNumber | Header RelativePath/FileName | No Format`
+- `Line Number | Copy With LineNumber | Header RelativePath/FileName | Delete Indent`
+- `Line Number | Copy With LineNumber | Header RelativePath/FileName | Delete BlankLine`
+- `Line Number | Copy With LineNumber | Header RelativePath/FileName | Delete Indent and BlankLine`
 
+- `Line Number | Copy No LineNumber | No Header | No Format`
+- `Line Number | Copy No LineNumber | No Header | Delete Indent`
+- `Line Number | Copy No LineNumber | No Header | Delete BlankLine`
+- `Line Number | Copy No LineNumber | No Header | Delete Indent and BlankLine`
+- `Line Number | Copy No LineNumber | Header FileName | No Format`
+- `Line Number | Copy No LineNumber | Header FileName | Delete Indent`
+- `Line Number | Copy No LineNumber | Header FileName | Delete BlankLine`
+- `Line Number | Copy No LineNumber | Header FileName | Delete Indent and BlankLine`
+- `Line Number | Copy No LineNumber | Header FullPath/FileName | No Format`
+- `Line Number | Copy No LineNumber | Header FullPath/FileName | Delete Indent`
+- `Line Number | Copy No LineNumber | Header FullPath/FileName | Delete BlankLine`
+- `Line Number | Copy No LineNumber | Header FullPath/FileName | Delete Indent and BlankLine`
+- `Line Number | Copy No LineNumber | Header RelativePath/FileName | No Format`
+- `Line Number | Copy No LineNumber | Header RelativePath/FileName | Delete Indent`
+- `Line Number | Copy No LineNumber | Header RelativePath/FileName | Delete BlankLine`
+- `Line Number | Copy No LineNumber | Header RelativePath/FileName | Delete Indent and BlankLine`
 
-- `Line Number | Copy Delete LineNumber | Header RelativePath/Filename | Delete Indent`
+- `Line Number | Copy Delete LineNumber | Header RelativePath/FileName | Delete Indent`
 
 ---
 
@@ -62,15 +86,45 @@ Or Select Function
     - `No Header >>`
       - `No Format`
       - `Delete Indent`
-    - `Header Filename >>`
+      - `Delete BlankLine`
+      - `Delete Indent and BlankLine`
+    - `Header FileName >>`
       - `No Format`
       - `Delete Indent`
-    - `Header FullPath/Filename >>`
+      - `Delete BlankLine`
+      - `Delete Indent and BlankLine`
+    - `Header FullPath/FileName >>`
       - `No Format`
       - `Delete Indent`
-    - `Header RelativePath/Filename >>`
+      - `Delete BlankLine`
+      - `Delete Indent and BlankLine`
+    - `Header RelativePath/FileName >>`
       - `No Format`
       - `Delete Indent`
+      - `Delete BlankLine`
+      - `Delete Indent and BlankLine`
+
+  - `Copy No LineNumber >>`
+    - `No Header >>`
+      - `No Format`
+      - `Delete Indent`
+      - `Delete BlankLine`
+      - `Delete Indent and BlankLine`
+    - `Header FileName >>`
+      - `No Format`
+      - `Delete Indent`
+      - `Delete BlankLine`
+      - `Delete Indent and BlankLine`
+    - `Header FullPath/FileName >>`
+      - `No Format`
+      - `Delete Indent`
+      - `Delete BlankLine`
+      - `Delete Indent and BlankLine`
+    - `Header RelativePath/FileName >>`
+      - `No Format`
+      - `Delete Indent`
+      - `Delete BlankLine`
+      - `Delete Indent and BlankLine`
 
   - `Copy Delete Line Number`
 
@@ -104,11 +158,13 @@ Released under the [MIT License][license].
 
 ## Version
 
-### 3.0.0
+### 2.3.0
 2022/04/17(Sun)
 - Add Copy Function
   - Delete BlankLine
   - Delete Indent and BlankLine
+- Add Copy Function
+  - Copy No LineNumber
 - Refactoring
 
 ### 2.2.0
