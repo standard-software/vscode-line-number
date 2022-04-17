@@ -48,11 +48,11 @@
     "commands": [
       {
         "command": "LineNumber.EditInsertFileLineNumberNoFormat",
-        "title": "Line Number | Edit | Insert File Line Number | No Format"
+        "title": "Line Number | Edit | Insert File LineNumber | No Format"
       },
       {
         "command": "LineNumber.EditInsertFileLineNumberDeleteIndent",
-        "title": "Line Number | Edit | Insert File Line Number | Delete Indent"
+        "title": "Line Number | Edit | Insert File LineNumber | Delete Indent"
       },
       {
         "command": "LineNumber.EditInsertInputStartNoFormat",
@@ -64,51 +64,51 @@
       },
       {
         "command": "LineNumber.EditDeleteLineNumber",
-        "title": "Line Number | Edit | Delete Line Number"
+        "title": "Line Number | Edit | Delete LineNumber"
       },
       {
         "command": "LineNumber.EditLineNumberTextDeleteBlankLine",
-        "title": "Line Number | Edit | Edit Line Number Text | Delete Blank Line"
+        "title": "Line Number | Edit | Edit LineNumber Text | Delete Blank Line"
       },
       {
         "command": "LineNumber.EditLineNumberTextDeleteIndent",
-        "title": "Line Number | Edit | Edit Line Number Text | Delete Indent"
+        "title": "Line Number | Edit | Edit LineNumber Text | Delete Indent"
       },
       {
         "command": "LineNumber.CopyNoHeaderNoFormat",
-        "title": "Line Number | Copy Clipboard | Without Path | No Format"
+        "title": "Line Number | Copy With LineNumber | No Header | No Format"
       },
       {
         "command": "LineNumber.CopyNoHeaderDeleteIndent",
-        "title": "Line Number | Copy Clipboard | Without Path | Delete Indent"
+        "title": "Line Number | Copy With LineNumber | No Header | Delete Indent"
       },
       {
         "command": "LineNumber.CopyFileNameNoFormat",
-        "title": "Line Number | Copy Clipboard | With Filename | No Format"
+        "title": "Line Number | Copy With LineNumber | Header Filename | No Format"
       },
       {
         "command": "LineNumber.CopyFileNameDeleteIndent",
-        "title": "Line Number | Copy Clipboard | With Filename | Delete Indent"
+        "title": "Line Number | Copy With LineNumber | Header Filename | Delete Indent"
       },
       {
         "command": "LineNumber.CopyFullPathNoFormat",
-        "title": "Line Number | Copy Clipboard | With FullPath | No Format"
+        "title": "Line Number | Copy With LineNumber | Header FullPath | No Format"
       },
       {
         "command": "LineNumber.CopyFullPathDeleteIndent",
-        "title": "Line Number | Copy Clipboard | With FullPath | Delete Indent"
+        "title": "Line Number | Copy With LineNumber | Header FullPath | Delete Indent"
       },
       {
         "command": "LineNumber.CopyRelativePathNoFormat",
-        "title": "Line Number | Copy Clipboard | With RelativePath | No Format"
+        "title": "Line Number | Copy With LineNumber | Header RelativePath | No Format"
       },
       {
         "command": "LineNumber.CopyRelativePathDeleteIndent",
-        "title": "Line Number | Copy Clipboard | With RelativePath | Delete Indent"
+        "title": "Line Number | Copy With LineNumber | Header RelativePath | Delete Indent"
       },
       {
         "command": "LineNumber.CopyDeleteLineNumber",
-        "title": "Line Number | Copy Clipboard | Copy Delete Line Number"
+        "title": "Line Number | Copy Delete LineNumber"
       },
       {
         "command": "LineNumber.SelectFunction",

@@ -29,12 +29,17 @@ Following commands are available:
 - `Line Number | Edit | Edit Line Number Text | Delete Blank Line`
 - `Line Number | Edit | Edit Line Number Text | Delete Indent`
 ---
-- `Line Number | Copy | Without Path | No Format`
-- `Line Number | Copy | Without Path | Delete Indent`
-- `Line Number | Copy | With FullPath/Filename | No Format`
-- `Line Number | Copy | With FullPath/Filename | Delete Indent`
-- `Line Number | Copy | With Filename | No Format`
-- `Line Number | Copy | With Filename | Delete Indent`
+- `Line Number | Copy With LineNumber | No Header | No Format`
+- `Line Number | Copy With LineNumber | No Header | Delete Indent`
+- `Line Number | Copy With LineNumber | Header Filename | No Format`
+- `Line Number | Copy With LineNumber | Header Filename | Delete Indent`
+- `Line Number | Copy With LineNumber | Header FullPath/Filename | No Format`
+- `Line Number | Copy With LineNumber | Header FullPath/Filename | Delete Indent`
+- `Line Number | Copy With LineNumber | Header RelativePath/Filename | No Format`
+- `Line Number | Copy With LineNumber | Header RelativePath/Filename | Delete Indent`
+
+
+- `Line Number | Copy Delete LineNumber | Header RelativePath/Filename | Delete Indent`
 
 ---
 
@@ -53,16 +58,21 @@ Or Select Function
       - `Delete Blank Line`
       - `Delete Indent`
 
-  - `Copy >>`
-    - `Without Path >>`
+  - `Copy With LineNumber >>`
+    - `No Header >>`
       - `No Format`
       - `Delete Indent`
-    - `With FullPath/Filename >>`
+    - `Header Filename >>`
       - `No Format`
       - `Delete Indent`
-    - `With Filename >>`
+    - `Header FullPath/Filename >>`
       - `No Format`
       - `Delete Indent`
+    - `Header RelativePath/Filename >>`
+      - `No Format`
+      - `Delete Indent`
+
+  - `Copy Delete Line Number`
 
 ## Setting
 

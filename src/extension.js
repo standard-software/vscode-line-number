@@ -292,8 +292,9 @@ function activate(context) {
           [`No Format`,                       ``,         () => { mainCopyWithLineNumber({header:`RelativePath`, format:`NoFormat`}); }],
           [`Delete Indent`,                   ``,         () => { mainCopyWithLineNumber({header:`RelativePath`, format:`DeleteIndent`}); }],
         ], `Line Number | Copy | With RelativePath`); }],
-        [`Copy Delete Line Number`,           ``,         () => { mainCopyDeleteLineNumber(); }],
-      ], `Line Number | Copy`); }],
+      ], `Line Number | Copy With LineNumber`); }],
+
+      [`Copy Delete Line Number`,           ``,         () => { mainCopyDeleteLineNumber(); }],
 
     ], `Line Number | Select Function`);
 
