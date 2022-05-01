@@ -21,112 +21,116 @@ https://marketplace.visualstudio.com/items?itemName=SatoshiYamamoto.vscode-line-
 
 Following commands are available:
 
-- `Line Number | Edit | Insert File Line Number | No Format`
-- `Line Number | Edit | Insert File Line Number | Delete Indent`
-- `Line Number | Edit | Insert Input Start | No Format`
-- `Line Number | Edit | Insert Input Start | Delete Indent`
-- `Line Number | Edit | Delete Line Number`
-- `Line Number | Edit | Edit Line Number Text | Delete Blank Line`
-- `Line Number | Edit | Edit Line Number Text | Delete Indent`
----
-- `Line Number | Copy With LineNumber | No Header | No Format`
-- `Line Number | Copy With LineNumber | No Header | Delete Indent`
-- `Line Number | Copy With LineNumber | No Header | Delete BlankLine`
-- `Line Number | Copy With LineNumber | No Header | Delete Indent and BlankLine`
-- `Line Number | Copy With LineNumber | Header FileName | No Format`
-- `Line Number | Copy With LineNumber | Header FileName | Delete Indent`
-- `Line Number | Copy With LineNumber | Header FileName | Delete BlankLine`
-- `Line Number | Copy With LineNumber | Header FileName | Delete Indent and BlankLine`
-- `Line Number | Copy With LineNumber | Header FullPath/FileName | No Format`
-- `Line Number | Copy With LineNumber | Header FullPath/FileName | Delete Indent`
-- `Line Number | Copy With LineNumber | Header FullPath/FileName | Delete BlankLine`
-- `Line Number | Copy With LineNumber | Header FullPath/FileName | Delete Indent and BlankLine`
-- `Line Number | Copy With LineNumber | Header RelativePath/FileName | No Format`
-- `Line Number | Copy With LineNumber | Header RelativePath/FileName | Delete Indent`
-- `Line Number | Copy With LineNumber | Header RelativePath/FileName | Delete BlankLine`
-- `Line Number | Copy With LineNumber | Header RelativePath/FileName | Delete Indent and BlankLine`
+```
+- Line Number | Edit | Insert File Line Number | No Format
+- Line Number | Edit | Insert File Line Number | Delete Indent
+- Line Number | Edit | Insert Input Start | No Format
+- Line Number | Edit | Insert Input Start | Delete Indent
+- Line Number | Edit | Delete Line Number
+- Line Number | Edit | Edit Line Number Text | Delete Blank Line
+- Line Number | Edit | Edit Line Number Text | Delete Indent
 
-- `Line Number | Copy No LineNumber | No Header | No Format`
-- `Line Number | Copy No LineNumber | No Header | Delete Indent`
-- `Line Number | Copy No LineNumber | No Header | Delete BlankLine`
-- `Line Number | Copy No LineNumber | No Header | Delete Indent and BlankLine`
-- `Line Number | Copy No LineNumber | Header FileName | No Format`
-- `Line Number | Copy No LineNumber | Header FileName | Delete Indent`
-- `Line Number | Copy No LineNumber | Header FileName | Delete BlankLine`
-- `Line Number | Copy No LineNumber | Header FileName | Delete Indent and BlankLine`
-- `Line Number | Copy No LineNumber | Header FullPath/FileName | No Format`
-- `Line Number | Copy No LineNumber | Header FullPath/FileName | Delete Indent`
-- `Line Number | Copy No LineNumber | Header FullPath/FileName | Delete BlankLine`
-- `Line Number | Copy No LineNumber | Header FullPath/FileName | Delete Indent and BlankLine`
-- `Line Number | Copy No LineNumber | Header RelativePath/FileName | No Format`
-- `Line Number | Copy No LineNumber | Header RelativePath/FileName | Delete Indent`
-- `Line Number | Copy No LineNumber | Header RelativePath/FileName | Delete BlankLine`
-- `Line Number | Copy No LineNumber | Header RelativePath/FileName | Delete Indent and BlankLine`
+- Line Number | Copy With LineNumber | No Header | No Format
+- Line Number | Copy With LineNumber | No Header | Delete Indent
+- Line Number | Copy With LineNumber | No Header | Delete BlankLine
+- Line Number | Copy With LineNumber | No Header | Delete Indent and BlankLine
+- Line Number | Copy With LineNumber | Header FileName | No Format
+- Line Number | Copy With LineNumber | Header FileName | Delete Indent
+- Line Number | Copy With LineNumber | Header FileName | Delete BlankLine
+- Line Number | Copy With LineNumber | Header FileName | Delete Indent and BlankLine
+- Line Number | Copy With LineNumber | Header FullPath/FileName | No Format
+- Line Number | Copy With LineNumber | Header FullPath/FileName | Delete Indent
+- Line Number | Copy With LineNumber | Header FullPath/FileName | Delete BlankLine
+- Line Number | Copy With LineNumber | Header FullPath/FileName | Delete Indent and BlankLine
+- Line Number | Copy With LineNumber | Header RelativePath/FileName | No Format
+- Line Number | Copy With LineNumber | Header RelativePath/FileName | Delete Indent
+- Line Number | Copy With LineNumber | Header RelativePath/FileName | Delete BlankLine
+- Line Number | Copy With LineNumber | Header RelativePath/FileName | Delete Indent and BlankLine
 
-- `Line Number | Copy Delete LineNumber | Header RelativePath/FileName | Delete Indent`
+- Line Number | Copy No LineNumber | No Header | No Format
+- Line Number | Copy No LineNumber | No Header | Delete Indent
+- Line Number | Copy No LineNumber | No Header | Delete BlankLine
+- Line Number | Copy No LineNumber | No Header | Delete Indent and BlankLine
+- Line Number | Copy No LineNumber | Header FileName | No Format
+- Line Number | Copy No LineNumber | Header FileName | Delete Indent
+- Line Number | Copy No LineNumber | Header FileName | Delete BlankLine
+- Line Number | Copy No LineNumber | Header FileName | Delete Indent and BlankLine
+- Line Number | Copy No LineNumber | Header FullPath/FileName | No Format
+- Line Number | Copy No LineNumber | Header FullPath/FileName | Delete Indent
+- Line Number | Copy No LineNumber | Header FullPath/FileName | Delete BlankLine
+- Line Number | Copy No LineNumber | Header FullPath/FileName | Delete Indent and BlankLine
+- Line Number | Copy No LineNumber | Header RelativePath/FileName | No Format
+- Line Number | Copy No LineNumber | Header RelativePath/FileName | Delete Indent
+- Line Number | Copy No LineNumber | Header RelativePath/FileName | Delete BlankLine
+- Line Number | Copy No LineNumber | Header RelativePath/FileName | Delete Indent and BlankLine
+
+- Line Number | Copy Delete LineNumber | Header RelativePath/FileName | Delete Indent
+```
 
 ---
 
 Or Select Function
 
-- `Line Number | Select Function >>`
-  - `Edit >>`
-    - `Insert File Line Number >>`
-      - `No Format`
-      - `Delete Indent`
-    - `Insert Input Start Number >>`
-      - `No Format`
-      - `Delete Indent`
-    - `Delete Line Number`
-    - `Edit Line Number Text >>`
-      - `Delete Blank Line`
-      - `Delete Indent`
+```
+- Line Number | Select Function >>
+  - Edit >>
+    - Insert File Line Number >>
+      - No Format
+      - Delete Indent
+    - Insert Input Start Number >>
+      - No Format
+      - Delete Indent
+    - Delete Line Number
+    - Edit Line Number Text >>
+      - Delete Blank Line
+      - Delete Indent
 
-  - `Copy With LineNumber >>`
-    - `No Header >>`
-      - `No Format`
-      - `Delete Indent`
-      - `Delete BlankLine`
-      - `Delete Indent and BlankLine`
-    - `Header FileName >>`
-      - `No Format`
-      - `Delete Indent`
-      - `Delete BlankLine`
-      - `Delete Indent and BlankLine`
-    - `Header FullPath/FileName >>`
-      - `No Format`
-      - `Delete Indent`
-      - `Delete BlankLine`
-      - `Delete Indent and BlankLine`
-    - `Header RelativePath/FileName >>`
-      - `No Format`
-      - `Delete Indent`
-      - `Delete BlankLine`
-      - `Delete Indent and BlankLine`
+  - Copy With LineNumber >>
+    - No Header >>
+      - No Format
+      - Delete Indent
+      - Delete BlankLine
+      - Delete Indent and BlankLine
+    - Header FileName >>
+      - No Format
+      - Delete Indent
+      - Delete BlankLine
+      - Delete Indent and BlankLine
+    - Header FullPath/FileName >>
+      - No Format
+      - Delete Indent
+      - Delete BlankLine
+      - Delete Indent and BlankLine
+    - Header RelativePath/FileName >>
+      - No Format
+      - Delete Indent
+      - Delete BlankLine
+      - Delete Indent and BlankLine
 
-  - `Copy No LineNumber >>`
-    - `No Header >>`
-      - `No Format`
-      - `Delete Indent`
-      - `Delete BlankLine`
-      - `Delete Indent and BlankLine`
-    - `Header FileName >>`
-      - `No Format`
-      - `Delete Indent`
-      - `Delete BlankLine`
-      - `Delete Indent and BlankLine`
-    - `Header FullPath/FileName >>`
-      - `No Format`
-      - `Delete Indent`
-      - `Delete BlankLine`
-      - `Delete Indent and BlankLine`
-    - `Header RelativePath/FileName >>`
-      - `No Format`
-      - `Delete Indent`
-      - `Delete BlankLine`
-      - `Delete Indent and BlankLine`
+  - Copy No LineNumber >>
+    - No Header >>
+      - No Format
+      - Delete Indent
+      - Delete BlankLine
+      - Delete Indent and BlankLine
+    - Header FileName >>
+      - No Format
+      - Delete Indent
+      - Delete BlankLine
+      - Delete Indent and BlankLine
+    - Header FullPath/FileName >>
+      - No Format
+      - Delete Indent
+      - Delete BlankLine
+      - Delete Indent and BlankLine
+    - Header RelativePath/FileName >>
+      - No Format
+      - Delete Indent
+      - Delete BlankLine
+      - Delete Indent and BlankLine
 
-  - `Copy Delete Line Number`
+  - Copy Delete Line Number
+```
 
 ## Setting
 
@@ -134,7 +138,7 @@ settings.json
 
 ```json
 {
-  "LineNumber.subMenuChar": ">>",
+  "LineNumber.subMenuMark": ">>",
   :
 }
 ```
@@ -153,10 +157,18 @@ Released under the [MIT License][license].
 [license]: https://github.com/standard-software/vscode-line-number/blob/master/LICENSE
 
 ## author
-    Satoshi Yamamoto  
-    standard.software.net@gmail.com
+
+```
+  Satoshi Yamamoto
+  standard.software.net@gmail.com
+```
 
 ## Version
+
+### 2.3.1
+2022/05/01(Sun)
+- Change Json key
+  - "LineNumber.subMenuChar" -> "LineNumber.subMenuMark"
 
 ### 2.3.0
 2022/04/17(Sun)

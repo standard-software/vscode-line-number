@@ -383,17 +383,17 @@ function activate(context) {
     });
   };
 
-  const mark = vscode.workspace.getConfiguration(`LineNumber`).get(`subMenuChar`);
+  const mark = vscode.workspace.getConfiguration(`LineNumber`).get(`subMenuMark`);
 
   registerCommand(`LineNumber.SelectFunction`, () => {
 
     commandQuickPick([
       [`Edit`, `${mark}`, () => { commandQuickPick([
         [`Insert File Line Number`,   `${mark}`,  () => { commandQuickPick([
-          [`No Format`,                   ``,         () => {
+          [`No Format`,               ``,         () => {
             mainEditInsertLineNumber({format: `NoFormat`});
           }],
-          [`Delete Indent`,               ``,         () => {
+          [`Delete Indent`,           ``,         () => {
             mainEditInsertLineNumber({format: `DeleteIndent`});
           }],
         ], `Line Number | Edit | Insert File Line Number`); }],
