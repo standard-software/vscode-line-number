@@ -165,6 +165,10 @@ Released under the [MIT License][license].
 
 ## Version
 
+### 2.4.0
+2022/05/03 Tue
+- Set title icon
+
 ### 2.3.1
 2022/05/01(Sun)
 - Change Json key
