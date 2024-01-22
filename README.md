@@ -1,9 +1,9 @@
-# vscode-line-number
+# Line Number
 
-[![Version][version-badge]][marketplace]
-[![Ratings][ratings-badge]][marketplace-ratings]
-[![Installs][installs-badge]][marketplace]
-[![License][license-badge]][license]
+[![](https://vsmarketplacebadges.dev/version-short/SatoshiYamamoto.vscode-line-number.png)](https://marketplace.visualstudio.com/items?itemName=SatoshiYamamoto.vscode-line-number)
+[![](https://vsmarketplacebadges.dev/installs-short/SatoshiYamamoto.vscode-line-number.png)](https://marketplace.visualstudio.com/items?itemName=SatoshiYamamoto.vscode-line-number)
+[![](https://vsmarketplacebadges.dev/rating-short/SatoshiYamamoto.vscode-line-number.png)](https://marketplace.visualstudio.com/items?itemName=SatoshiYamamoto.vscode-line-number)
+[![](https://img.shields.io/github/license/standard-software/vscode-date-time-calendar.png)](https://github.com/standard-software/vscode-date-time-calendar/blob/main/LICENSE)
 
 This extension has the following functions.
 - Get a Copy Clipboard with file path and line number.
@@ -147,15 +147,6 @@ settings.json
 
 Released under the [MIT License][license].
 
-[version-badge]: https://vsmarketplacebadge.apphb.com/version/SatoshiYamamoto.vscode-line-number.svg
-[ratings-badge]: https://vsmarketplacebadge.apphb.com/rating/SatoshiYamamoto.vscode-line-number.svg
-[installs-badge]: https://vsmarketplacebadge.apphb.com/installs/SatoshiYamamoto.vscode-line-number.svg
-[license-badge]: https://img.shields.io/github/license/standard-software/vscode-line-number.svg
-
-[marketplace]: https://marketplace.visualstudio.com/items?itemName=SatoshiYamamoto.vscode-line-number
-[marketplace-ratings]: https://marketplace.visualstudio.com/items?itemName=SatoshiYamamoto.vscode-line-number#review-details
-[license]: https://github.com/standard-software/vscode-line-number/blob/master/LICENSE
-
 ## author
 
 ```
@@ -164,11 +155,13 @@ Released under the [MIT License][license].
 ```
 
 ## Version
+
 ### 2.5.0
 2024/01/22 Mon
 - Fix run error
   - Line Number | Edit | Insert File LineNumber
   - Line Number | Edit | Insert Input Start
+- update README
 
 ### 2.4.0
 2022/05/03 Tue
