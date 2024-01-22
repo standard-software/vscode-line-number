@@ -164,6 +164,11 @@ Released under the [MIT License][license].
 ```
 
 ## Version
+### 2.5.0
+2024/01/22 Mon
+- Fix run error
+  - Line Number | Edit | Insert File LineNumber
+  - Line Number | Edit | Insert Input Start
 
 ### 2.4.0
 2022/05/03 Tue

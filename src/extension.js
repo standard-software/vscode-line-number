@@ -544,6 +544,8 @@ function activate(context) {
 
   const mainEdit = (commandName) => {
     if (![
+      `InsertNoFormat`, `InsertDeleteIndent`,
+      `InputNoFormat`, `InputDeleteIndent`,
       `DeleteLineNumber`, `DeleteBlankLine`, `DeleteIndent`,
     ].includes(commandName)) {
       throw new Error(`mainEdit args commandName:${commandName}`);
@@ -556,6 +558,86 @@ function activate(context) {
     }
 
     switch (commandName) {
+
+    case `InsertNoFormat`: {
+      const delimiter = `: `;
+      editor.edit(editBuilder => {
+        const numberDigit = getMaxFileLineNumberDigit(editor);
+        loopSelectionsLines(editor, i => {
+          const lineNumberText = (i + 1).toString().padStart(numberDigit, `0`);
+          editBuilder.insert(new vscode.Position(i, 0), `${lineNumberText}${delimiter}`);
+        });
+      });
+    } break;
+
+    case `InsertDeleteIndent`: {
+      const delimiter = `: `;
+      editor.edit(editBuilder => {
+        const numberDigit = getMaxFileLineNumberDigit(editor);
+        const minIndent = getMinIndent(editor);
+        loopSelectionsLines(editor, i => {
+          const { text } = getLineTextInfo(editor, i);
+          const subText = _subLength(text, minIndent);
+          const lineNumberText = (i + 1).toString().padStart(numberDigit, `0`);
+          const range = new vscode.Range(
+            i, 0, i, text.length,
+          );
+          editBuilder.replace(range, `${lineNumberText}${delimiter}${subText}`);
+        });
+      });
+    } break;
+
+    case `InputNoFormat`:
+    case `InputDeleteIndent`: {
+
+      vscode.window.showInputBox({
+        ignoreFocusOut: true,
+        placeHolder: ``,
+        prompt: `Input String`,
+        value: `1`,
+      }).then(inputString => {
+        const inputInteger = _stringToIntegerDefault(inputString);
+        if (isUndefined(inputInteger)) { return; }
+
+        switch (commandName) {
+
+        case `InputNoFormat`: {
+          const delimiter = `: `;
+          editor.edit(editBuilder => {
+            let lineNumber = inputInteger;
+            const numberDigit = getInputLineNumberDigit(editor, lineNumber);
+            loopSelectionsLines(editor, i => {
+              const lineNumberText = lineNumber.toString().padStart(numberDigit, `0`);
+              editBuilder.insert(new vscode.Position(i, 0), `${lineNumberText}${delimiter}`);
+              lineNumber += 1;
+            });
+          });
+        } break;
+
+        case `InputDeleteIndent`: {
+          const delimiter = `: `;
+          editor.edit(editBuilder => {
+            let lineNumber = inputInteger;
+            const numberDigit = getInputLineNumberDigit(editor, lineNumber);
+            const minIndent = getMinIndent(editor);
+            loopSelectionsLines(editor, i => {
+              const { text } = getLineTextInfo(editor, i);
+              const subText = _subLength(text, minIndent);
+              const lineNumberText = lineNumber.toString().padStart(numberDigit, `0`);
+              const range = new vscode.Range(
+                i, 0, i, text.length,
+              );
+              editBuilder.replace(range, `${lineNumberText}${delimiter}${subText}`);
+              lineNumber += 1;
+            });
+          });
+        } break;
+
+        }
+
+      });
+
+    } break;
 
     case `DeleteLineNumber`: {
       const delimiter = `: `;
