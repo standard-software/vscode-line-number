@@ -2,7 +2,7 @@
   "name": "vscode-line-number",
   "displayName": "Line Number",
   "description": "Insert and Delete line numbers in text and copy.",
-  "version": "2.5.0",
+  "version": "3.0.0",
 	"icon": "vscode-line-number_icon.png",
   "publisher": "SatoshiYamamoto",
   "author": {
@@ -30,183 +30,41 @@
     "commands": [
       {
         "command": "LineNumber.EditInsertFileLineNumberNoFormat",
-        "title": "Line Number | Edit | Insert File LineNumber | No Format"
+        "title": "Line Number : Insert File LineNumber : No Format"
       },
       {
         "command": "LineNumber.EditInsertFileLineNumberDeleteIndent",
-        "title": "Line Number | Edit | Insert File LineNumber | Delete Indent"
+        "title": "Line Number : Insert File LineNumber : Delete Indent"
       },
       {
         "command": "LineNumber.EditInsertInputStartNoFormat",
-        "title": "Line Number | Edit | Insert Input Start | No Format"
+        "title": "Line Number : Insert Input Start : No Format"
       },
       {
         "command": "LineNumber.EditInsertInputStartDeleteIndent",
-        "title": "Line Number | Edit | Insert Input Start | Delete Indent"
+        "title": "Line Number : Insert Input Start : Delete Indent"
       },
       {
         "command": "LineNumber.EditDeleteLineNumber",
-        "title": "Line Number | Edit | Delete LineNumber"
+        "title": "Line Number : Delete LineNumber"
       },
       {
         "command": "LineNumber.EditLineNumberTextDeleteBlankLine",
-        "title": "Line Number | Edit | Edit LineNumber Text | Delete Blank Line"
+        "title": "Line Number : Edit LineNumber Text : Delete Blank Line"
       },
       {
         "command": "LineNumber.EditLineNumberTextDeleteIndent",
-        "title": "Line Number | Edit | Edit LineNumber Text | Delete Indent"
-      },
-      {
-        "command": "LineNumber.CopyLineNumberNoHeaderNoFormat",
-        "title": "Line Number | Copy With LineNumber | No Header | No Format"
-      },
-      {
-        "command": "LineNumber.CopyLineNumberNoHeaderDeleteIndent",
-        "title": "Line Number | Copy With LineNumber | No Header | Delete Indent"
-      },
-      {
-        "command": "LineNumber.CopyLineNumberNoHeaderDeleteBlankLine",
-        "title": "Line Number | Copy With LineNumber | No Header | Delete BlankLine"
-      },
-      {
-        "command": "LineNumber.CopyLineNumberNoHeaderDeleteIndentBlankLine",
-        "title": "Line Number | Copy With LineNumber | No Header | Delete Indent and BlankLine"
-      },
-      {
-        "command": "LineNumber.CopyLineNumberFileNameNoFormat",
-        "title": "Line Number | Copy With LineNumber | Header FileName | No Format"
-      },
-      {
-        "command": "LineNumber.CopyLineNumberFileNameDeleteIndent",
-        "title": "Line Number | Copy With LineNumber | Header FileName | Delete Indent"
-      },
-      {
-        "command": "LineNumber.CopyLineNumberFileNameDeleteBlankLine",
-        "title": "Line Number | Copy With LineNumber | Header FileName | Delete BlankLine"
-      },
-      {
-        "command": "LineNumber.CopyLineNumberFileNameDeleteIndentBlankLine",
-        "title": "Line Number | Copy With LineNumber | Header FileName | Delete Indent and BlankLine"
-      },
-      {
-        "command": "LineNumber.CopyLineNumberFullPathNoFormat",
-        "title": "Line Number | Copy With LineNumber | Header FullPath | No Format"
-      },
-      {
-        "command": "LineNumber.CopyLineNumberFullPathDeleteIndent",
-        "title": "Line Number | Copy With LineNumber | Header FullPath | Delete Indent"
-      },
-      {
-        "command": "LineNumber.CopyLineNumberFullPathDeleteBlankLine",
-        "title": "Line Number | Copy With LineNumber | Header FullPath | Delete BlankLine"
-      },
-      {
-        "command": "LineNumber.CopyLineNumberFullPathDeleteIndentBlankLine",
-        "title": "Line Number | Copy With LineNumber | Header FullPath | Delete Indent and BlankLine"
-      },
-      {
-        "command": "LineNumber.CopyLineNumberRelativePathNoFormat",
-        "title": "Line Number | Copy With LineNumber | Header RelativePath | No Format"
-      },
-      {
-        "command": "LineNumber.CopyLineNumberRelativePathDeleteIndent",
-        "title": "Line Number | Copy With LineNumber | Header RelativePath | Delete Indent"
-      },
-      {
-        "command": "LineNumber.CopyLineNumberRelativePathDeleteBlankLine",
-        "title": "Line Number | Copy With LineNumber | Header RelativePath | Delete BlankLine"
-      },
-      {
-        "command": "LineNumber.CopyLineNumberRelativePathDeleteIndentBlankLine",
-        "title": "Line Number | Copy With LineNumber | Header RelativePath | Delete Indent and BlankLine"
-      },
-      {
-        "command": "LineNumber.CopyNoLineNumberNoHeaderNoFormat",
-        "title": "Line Number | Copy No LineNumber | No Header | No Format"
-      },
-      {
-        "command": "LineNumber.CopyNoLineNumberNoHeaderDeleteIndent",
-        "title": "Line Number | Copy No LineNumber | No Header | Delete Indent"
-      },
-      {
-        "command": "LineNumber.CopyNoLineNumberNoHeaderDeleteBlankLine",
-        "title": "Line Number | Copy No LineNumber | No Header | Delete BlankLine"
-      },
-      {
-        "command": "LineNumber.CopyNoLineNumberNoHeaderDeleteIndentBlankLine",
-        "title": "Line Number | Copy No LineNumber | No Header | Delete Indent and BlankLine"
-      },
-      {
-        "command": "LineNumber.CopyNoLineNumberFileNameNoFormat",
-        "title": "Line Number | Copy No LineNumber | Header FileName | No Format"
-      },
-      {
-        "command": "LineNumber.CopyNoLineNumberFileNameDeleteIndent",
-        "title": "Line Number | Copy No LineNumber | Header FileName | Delete Indent"
-      },
-      {
-        "command": "LineNumber.CopyNoLineNumberFileNameDeleteBlankLine",
-        "title": "Line Number | Copy No LineNumber | Header FileName | Delete BlankLine"
-      },
-      {
-        "command": "LineNumber.CopyNoLineNumberFileNameDeleteIndentBlankLine",
-        "title": "Line Number | Copy No LineNumber | Header FileName | Delete Indent and BlankLine"
-      },
-      {
-        "command": "LineNumber.CopyNoLineNumberFullPathNoFormat",
-        "title": "Line Number | Copy No LineNumber | Header FullPath | No Format"
-      },
-      {
-        "command": "LineNumber.CopyNoLineNumberFullPathDeleteIndent",
-        "title": "Line Number | Copy No LineNumber | Header FullPath | Delete Indent"
-      },
-      {
-        "command": "LineNumber.CopyNoLineNumberFullPathDeleteBlankLine",
-        "title": "Line Number | Copy No LineNumber | Header FullPath | Delete BlankLine"
-      },
-      {
-        "command": "LineNumber.CopyNoLineNumberFullPathDeleteIndentBlankLine",
-        "title": "Line Number | Copy No LineNumber | Header FullPath | Delete Indent and BlankLine"
-      },
-      {
-        "command": "LineNumber.CopyNoLineNumberRelativePathNoFormat",
-        "title": "Line Number | Copy No LineNumber | Header RelativePath | No Format"
-      },
-      {
-        "command": "LineNumber.CopyNoLineNumberRelativePathDeleteIndent",
-        "title": "Line Number | Copy No LineNumber | Header RelativePath | Delete Indent"
-      },
-      {
-        "command": "LineNumber.CopyNoLineNumberRelativePathDeleteBlankLine",
-        "title": "Line Number | Copy No LineNumber | Header RelativePath | Delete BlankLine"
-      },
-      {
-        "command": "LineNumber.CopyNoLineNumberRelativePathDeleteIndentBlankLine",
-        "title": "Line Number | Copy No LineNumber | Header RelativePath | Delete Indent and BlankLine"
-      },
-      {
-        "command": "LineNumber.CopyLineNumberDeleteLineNumber",
-        "title": "Line Number | Copy Delete LineNumber"
+        "title": "Line Number : Edit LineNumber Text : Delete Indent"
       },
       {
         "command": "LineNumber.SelectFunction",
-        "title": "Line Number | Select Function"
+        "title": "Line Number : Select Function..."
       }
-    ],
-    "configuration": {
-      "type": "object",
-      "title": "LineNumber",
-      "properties": {
-        "LineNumber.subMenuMark": {
-          "type": "string",
-          "default": "▸"
-        }
-      }
-    }
+    ]
   },
   "scripts": {
     "lint": "eslint --fix ./src",
-    "pack": "vsce package && code --install-extension vscode-line-number-2.5.0.vsix",
+    "pack": "vsce package && code --install-extension vscode-line-number-3.0.0.vsix",
     "": ""
   },
   "devDependencies": {
