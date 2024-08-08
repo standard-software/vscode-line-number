@@ -89,64 +89,6 @@ const getLineTextInfo = (editor, lineIndex) => {
   };
 };
 
-const setTextLineNumberNoFormat = (editor) => {
-  const delimiter = `: `;
-  editor.edit(editBuilder => {
-    const numberDigit = getMaxFileLineNumberDigit(editor);
-    loopSelectionsLines(editor, i => {
-      const lineNumber = (i + 1).toString().padStart(numberDigit, `0`);
-      editBuilder.insert(new vscode.Position(i, 0), `${lineNumber}${delimiter}`);
-    });
-  });
-};
-
-const setTextLineNumberDeleteIndent = (editor) => {
-  const delimiter = `: `;
-  editor.edit(editBuilder => {
-    const numberDigit = getMaxFileLineNumberDigit(editor);
-    const minIndent = getMinIndent(editor);
-    loopSelectionsLines(editor, i => {
-      const { text } = getLineTextInfo(editor, i);
-      const subText = _subLength(text, minIndent);
-      const lineNumber = (i + 1).toString().padStart(numberDigit, `0`);
-      const range = new vscode.Range(
-        i, 0, i, text.length,
-      );
-      editBuilder.replace(range, `${lineNumber}${delimiter}${subText}`);
-    });
-  });
-};
-
-const setTextInputNumberNoFormat = (editor, inputNumber) => {
-  const delimiter = `: `;
-  editor.edit(editBuilder => {
-    const numberDigit = getInputLineNumberDigit(editor, inputNumber);
-    loopSelectionsLines(editor, i => {
-      const lineNumber = inputNumber.toString().padStart(numberDigit, `0`);
-      editBuilder.insert(new vscode.Position(i, 0), `${lineNumber}${delimiter}`);
-      inputNumber += 1;
-    });
-  });
-};
-
-const setTextInputNumberDeleteIndent = (editor, inputNumber) => {
-  const delimiter = `: `;
-  editor.edit(editBuilder => {
-    const numberDigit = getInputLineNumberDigit(editor, inputNumber);
-    const minIndent = getMinIndent(editor);
-    loopSelectionsLines(editor, i => {
-      const { text } = getLineTextInfo(editor, i);
-      const subText = _subLength(text, minIndent);
-      const lineNumber = inputNumber.toString().padStart(numberDigit, `0`);
-      const range = new vscode.Range(
-        i, 0, i, text.length,
-      );
-      editBuilder.replace(range, `${lineNumber}${delimiter}${subText}`);
-      inputNumber += 1;
-    });
-  });
-};
-
 function activate(context) {
 
   const registerCommand = (commandName, func) => {
@@ -171,42 +113,25 @@ function activate(context) {
     });
   };
 
-  // const mark = vscode.workspace.getConfiguration(`LineNumber`).get(`subMenuMark`);
-  // const mark = `▸`;
-  const mark = `>>`;
 
   registerCommand(`LineNumber.SelectFunction`, () => {
 
     commandQuickPick([
-      [`Insert File Line Number`,   `${mark}`,  () => { commandQuickPick([
-        [`No Format`,               ``,         () => {
-          mainEditInsertLineNumber({format: `NoFormat`});
-        }],
-        [`Delete Indent`,           ``,         () => {
-          mainEditInsertLineNumber({format: `DeleteIndent`});
-        }],
-      ], `Line Number : Insert File Line Number`); }],
-      [`Insert Input Start Number`, `${mark}`,  () => { commandQuickPick([
-        [`No Format`,               ``,         () => {
-          mainEditInsertInputNumber({format: `NoFormat`});
-        }],
-        [`Delete Indent`,           ``,         () => {
-          mainEditInsertInputNumber({format: `DeleteIndent`});
-        }],
-      ], `Line Number : Insert Input Start Number`); }],
+      [`Insert File Line Number`, ``, () => {
+        mainEdit(`InsertNoFormat`);
+      }],
+      [`Insert Input Start Number`, ``, () => {
+        mainEdit(`InputNoFormat`);
+      }],
       [`Delete Line Number`,        ``,         () => {
         mainEdit(`DeleteLineNumber`);
       }],
-      [`Edit Line Number Text`,     `${mark}`,  () => { commandQuickPick([
-        [`Delete Blank Line`,       ``,         () => {
-          mainEdit(`DeleteBlankLine`);
-        }],
-        [`Delete Indent`,           ``,         () => {
-          mainEdit(`DeleteIndent`);
-        }],
-      ], `Line Number : Edit Line Number Text`); }],
-
-
+      [`Edit Line Number Text : Delete Blank Line`, ``, () => {
+        mainEdit(`DeleteBlankLine`);
+      }],
+      [`Edit Line Number Text : Delete Indent`, ``, () => {
+        mainEdit(`DeleteIndent`);
+      }],
     ], `Line Number : Select Function`);
 
   });
@@ -376,77 +301,12 @@ function activate(context) {
 
   };
 
-  const mainEditInsertLineNumber = ({format}) => {
-    if (![
-      `NoFormat`, `DeleteIndent`,
-    ].includes(format)) {
-      throw new Error(`mainEditInsertLineNumber args format:${format}`);
-    }
-
-    const editor = vscode.window.activeTextEditor;
-    if (!editor) {
-      vscode.window.showInformationMessage(`No editor is active`);
-      return;
-    }
-
-    switch (format) {
-    case `NoFormat`: {
-      setTextLineNumberNoFormat(editor);
-    }; break;
-    case `DeleteIndent`: {
-      setTextLineNumberDeleteIndent(editor);
-    }; break;
-    }
-  };
-
-  const mainEditInsertInputNumber = ({format}) => {
-    if (![
-      `NoFormat`, `DeleteIndent`,
-    ].includes(format)) {
-      throw new Error(`mainEditInsertInputNumber args format:${format}`);
-    }
-
-    const editor = vscode.window.activeTextEditor;
-    if (!editor) {
-      vscode.window.showInformationMessage(`No editor is active`);
-      return;
-    }
-
-    vscode.window.showInputBox({
-      ignoreFocusOut: true,
-      placeHolder: ``,
-      prompt: `Input String`,
-      value: `1`,
-    }).then(inputString => {
-      const inputInteger = _stringToIntegerDefault(inputString);
-      if (isUndefined(inputInteger)) { return; }
-
-      switch (format) {
-      case `NoFormat`: {
-        setTextInputNumberNoFormat(editor, inputInteger);
-      }; break;
-      case `DeleteIndent`: {
-        setTextInputNumberDeleteIndent(editor, inputInteger);
-      }; break;
-      }
-    });
-
-  };
-
   registerCommand(`LineNumber.EditInsertFileLineNumberNoFormat`, () => {
     mainEdit(`InsertNoFormat`);
   });
 
-  registerCommand(`LineNumber.EditInsertFileLineNumberDeleteIndent`, () => {
-    mainEdit(`InsertDeleteIndent`);
-  });
-
   registerCommand(`LineNumber.EditInsertInputStartNoFormat`, () => {
     mainEdit(`InputNoFormat`);
-  });
-
-  registerCommand(`LineNumber.EditInsertInputStartDeleteIndent`, () => {
-    mainEdit(`InputDeleteIndent`);
   });
 
   registerCommand(`LineNumber.EditDeleteLineNumber`, () => {

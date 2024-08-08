@@ -7,6 +7,8 @@
 - update README
 - add CHANGELOG
   - Moved version notations from README.
+- Delete Command "Line Number : Insert File LineNumber : Delete Indent"
+- Delete Command "Line Number : Insert Input Start : Delete Indent"
 
 ### 2.5.0
 2024/01/22 Mon

@@ -32,10 +32,8 @@ https://marketplace.visualstudio.com/items?itemName=SatoshiYamamoto.vscode-line-
 Following commands are available:
 
 ```
-- Line Number : Insert File Line Number : No Format
-- Line Number : Insert File Line Number : Delete Indent
-- Line Number : Insert Input Start : No Format
-- Line Number : Insert Input Start : Delete Indent
+- Line Number : Insert File Line Number
+- Line Number : Insert Input Start
 - Line Number : Delete Line Number
 - Line Number : Edit Line Number Text : Delete Blank Line
 - Line Number : Edit Line Number Text : Delete Indent
@@ -45,30 +43,12 @@ Or Select Function
 
 ```
 - Line Number : Select Function >>
-  - Insert File Line Number >>
-    - No Format
-    - Delete Indent
-  - Insert Input Start Number >>
-    - No Format
-    - Delete Indent
+  - Insert File Line Number
+  - Insert Input Start Number
   - Delete Line Number
-  - Edit Line Number Text >>
-    - Delete Blank Line
-    - Delete Indent
+  - Edit Line Number Text : Delete Blank Line
+  - Edit Line Number Text : Delete Indent
 ```
-
-<!--
-## Setting
-
-settings.json
-
-```json
-{
-  "LineNumber.subMenuMark": ">>",
-  :
-}
-```
--->
 
 ## License
 

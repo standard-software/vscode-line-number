@@ -3,12 +3,21 @@
   "displayName": "Line Number",
   "description": "Insert and Delete line numbers in text and copy.",
   "version": "3.0.0",
-	"icon": "vscode-line-number_icon.png",
+  "icon": "vscode-line-number_icon.png",
   "publisher": "SatoshiYamamoto",
   "author": {
     "name": "Satoshi Yamamoto",
     "email": "standard.software.net@gmail.com",
     "url": "https://www.facebook.com/stndardsoftware"
+  },
+  "scripts": {
+    "lint": "eslint --fix ./src",
+    "pack": "vsce package && code --install-extension vscode-line-number-3.0.0.vsix",
+    "": ""
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "vsce": "^2.5.1"
   },
   "license": "MIT",
   "repository": {
@@ -22,7 +31,7 @@
     "Other"
   ],
   "keywords": [
-    "line number"
+    "line number linenumber"
   ],
   "activationEvents": [],
   "main": "./src/extension.js",
@@ -30,19 +39,11 @@
     "commands": [
       {
         "command": "LineNumber.EditInsertFileLineNumberNoFormat",
-        "title": "Line Number : Insert File LineNumber : No Format"
-      },
-      {
-        "command": "LineNumber.EditInsertFileLineNumberDeleteIndent",
-        "title": "Line Number : Insert File LineNumber : Delete Indent"
+        "title": "Line Number : Insert File LineNumber"
       },
       {
         "command": "LineNumber.EditInsertInputStartNoFormat",
-        "title": "Line Number : Insert Input Start : No Format"
-      },
-      {
-        "command": "LineNumber.EditInsertInputStartDeleteIndent",
-        "title": "Line Number : Insert Input Start : Delete Indent"
+        "title": "Line Number : Insert Input Start"
       },
       {
         "command": "LineNumber.EditDeleteLineNumber",
@@ -58,17 +59,8 @@
       },
       {
         "command": "LineNumber.SelectFunction",
-        "title": "Line Number : Select Function..."
+        "title": "Line Number : Select Function ..."
       }
     ]
-  },
-  "scripts": {
-    "lint": "eslint --fix ./src",
-    "pack": "vsce package && code --install-extension vscode-line-number-3.0.0.vsix",
-    "": ""
-  },
-  "devDependencies": {
-    "eslint": "^7.32.0",
-    "vsce": "^2.5.1"
   }
 }
