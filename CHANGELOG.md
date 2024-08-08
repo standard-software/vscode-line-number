@@ -1,5 +1,9 @@
 # Change Log
 
+### 3.0.1
+2024/08/08 Thu
+- update README
+
 ### 3.0.0
 2024/08/06 Tue
 - Delete Copy Function

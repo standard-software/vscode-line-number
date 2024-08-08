@@ -18,10 +18,10 @@ Since v3.0.0, this extension no longer has the ability to add line numbers and c
 
 If you need that functionality, please use the following extension
 
-- Copy Format Code - Visual Studio Marketplace
+- Copy Format Code - Visual Studio Marketplace  
 https://marketplace.visualstudio.com/items?itemName=SatoshiYamamoto.vscode-copy-format-code
 
-Copy Format Code is more versatile and easier to use, so please migrate to it for the ability to add file line numbers and copy them.
+The Copy Format Code extension is more versatile and easier to use than previous versions of this extension. Please use the Copy Format Code Extension.
 
 ## Install
 

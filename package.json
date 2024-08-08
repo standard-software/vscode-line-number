@@ -1,8 +1,8 @@
 {
   "name": "vscode-line-number",
   "displayName": "Line Number",
-  "description": "Insert and Delete line numbers in text and copy.",
-  "version": "3.0.0",
+  "description": "Inserting and deleting line numbers in text.",
+  "version": "3.0.1",
   "icon": "vscode-line-number_icon.png",
   "publisher": "SatoshiYamamoto",
   "author": {
@@ -12,7 +12,7 @@
   },
   "scripts": {
     "lint": "eslint --fix ./src",
-    "pack": "vsce package && code --install-extension vscode-line-number-3.0.0.vsix",
+    "pack": "vsce package && code --install-extension vscode-line-number-3.0.1.vsix",
     "": ""
   },
   "devDependencies": {
