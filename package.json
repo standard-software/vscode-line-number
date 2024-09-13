@@ -36,6 +36,19 @@
   "activationEvents": [],
   "main": "./src/extension.js",
   "contributes": {
+
+    "configuration": {
+      "type": "object",
+      "title": "Line Number",
+      "properties": {
+        "LineNumber.delimiter": {
+          "type": "string",
+          "default": ": ",
+          "description": "Line Number : delimiter"
+        }
+      }
+    },
+
     "commands": [
       {
         "command": "LineNumber.EditInsertFileLineNumberNoFormat",

@@ -132,11 +132,22 @@ _ = Space
 103:____GHI
 ```
 
+## Setting
+
+default: settings.json
+```json
+{
+  "LineNumber.delimiter": ": ",
+}
+```
+
+The delimiter must contain non-whitespace characters. All spaces and all tabs cannot be specified.
+
 ## Contact
 
 Please contact me if you have any requests.
 
-```md
+```
 Satoshi Yamamoto
 standard.software.net@gmail.com  
 Japanese / English

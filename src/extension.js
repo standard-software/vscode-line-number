@@ -3,6 +3,7 @@ const {
   isUndefined,
   isNull,
   _trimFirst,
+  _trimLast,
   _trim,
   _indexOfFirst,
   _subLength,
@@ -25,31 +26,23 @@ const loopSelectionsLines = (editor, func) => {
   }
 };
 
+const escapeRegExp = (value) => {
+  return value.replace(/[\\\*\+\.\?\{\}\(\)\[\]\^\$\-\|\/]/g, `\\$&`);
+};
+
 const getIndent = (line) => {
   return line.length - _trimFirst(line, [` `, `\t`]).length;
 };
 
-const getMinIndent = (editor) => {
+const getMinIndentExcludeLineNumber = (editor, delimiter) => {
+  const trimDelimiter = _trimLast(delimiter);
+  const trimDelimiterEsc = escapeRegExp(trimDelimiter);
   let minIndent = Infinity;
   loopSelectionsLines(editor, i => {
     const {text} = editor.document.lineAt(i);
     if (_trim(text) === ``) { return; }
-    const indent = getIndent(text);
-    if (indent < minIndent) {
-      minIndent = indent;
-    }
-  });
-  if (minIndent === Infinity) { minIndent = 0; }
-  return minIndent;
-};
-
-const getMinIndentExcludeLineNumber = (editor) => {
-  let minIndent = Infinity;
-  loopSelectionsLines(editor, i => {
-    const {text} = editor.document.lineAt(i);
-    if (_trim(text) === ``) { return; }
-    if (isNull(_trim(text).match(/^\d+:+.*$/))) { return; }
-    const colonAfterText = _subLastDelimFirst(text, `: `);
+    if (isNull(_trim(text).match(`^\\d+${trimDelimiterEsc}+.*$`))) { return; }
+    const colonAfterText = _subLastDelimFirst(text, delimiter);
     if (_trim(colonAfterText) === ``) { return; }
     const indent = getIndent(colonAfterText);
     if (indent < minIndent) {
@@ -150,10 +143,17 @@ function activate(context) {
       return;
     }
 
+    const delimiter = vscode.workspace
+      .getConfiguration(`LineNumber`).get(`delimiter`);
+
+    if (_trim(delimiter) === ``) {
+      vscode.window.showInformationMessage(`The delimiter must contain non-whitespace characters`);
+      return;
+    }
+
     switch (commandName) {
 
     case `InsertNoFormat`: {
-      const delimiter = `: `;
       editor.edit(editBuilder => {
         const numberDigit = getMaxFileLineNumberDigit(editor);
         loopSelectionsLines(editor, i => {
@@ -173,7 +173,6 @@ function activate(context) {
         const inputInteger = _stringToIntegerDefault(inputString);
         if (isUndefined(inputInteger)) { return; }
 
-        const delimiter = `: `;
         editor.edit(editBuilder => {
           let lineNumber = inputInteger;
           const numberDigit = getInputLineNumberDigit(editor, lineNumber);
@@ -188,12 +187,12 @@ function activate(context) {
     } break;
 
     case `DeleteLineNumber`: {
-      const delimiter = `: `;
-      const trimDelimiter = _trim(delimiter);
+      const trimDelimiter = _trimLast(delimiter);
+      const trimDelimiterEsc = escapeRegExp(trimDelimiter);
       editor.edit(editBuilder => {
         loopSelectionsLines(editor, i => {
           const { text } = getLineTextInfo(editor, i);
-          if (isNull(_trim(text).match(`^\\d+${trimDelimiter}+.*$`))) { return; }
+          if (isNull(_trim(text).match(`^\\d+${trimDelimiterEsc}+.*$`))) { return; }
           let colonIndex = _indexOfFirst(text, delimiter);
           if (colonIndex !== -1) {
             const range = new vscode.Range(
@@ -214,12 +213,12 @@ function activate(context) {
     } break;
 
     case `DeleteBlankLine`: {
-      const delimiter = `: `;
-      const trimDelimiter = _trim(delimiter);
+      const trimDelimiter = _trimLast(delimiter);
+      const trimDelimiterEsc = escapeRegExp(trimDelimiter);
       editor.edit(editBuilder => {
         loopSelectionsLines(editor, i => {
           const { text } = getLineTextInfo(editor, i);
-          if (isNull(_trim(text).match(`^\\d+${trimDelimiter}+.*$`))) { return; }
+          if (isNull(_trim(text).match(`^\\d+${trimDelimiterEsc}+.*$`))) { return; }
           if (_trim(_subLastDelimFirst(text, trimDelimiter)) === ``) {
             const range = new vscode.Range(
               i, 0, i + 1, 0,
@@ -231,13 +230,13 @@ function activate(context) {
     } break;
 
     case `DeleteIndent`: {
-      const delimiter = `: `;
-      const trimDelimiter = _trim(delimiter);
+      const trimDelimiter = _trimLast(delimiter);
+      const trimDelimiterEsc = escapeRegExp(trimDelimiter);
       editor.edit(editBuilder => {
-        const minIndent = getMinIndentExcludeLineNumber(editor);
+        const minIndent = getMinIndentExcludeLineNumber(editor, delimiter);
         loopSelectionsLines(editor, i => {
           const { text } = getLineTextInfo(editor, i);
-          if (isNull(_trim(text).match(`^\\d+${trimDelimiter}+.*$`))) { return; }
+          if (isNull(_trim(text).match(`^\\d+${trimDelimiterEsc}+.*$`))) { return; }
           const colonAfterText = _subLastDelimFirst(text, trimDelimiter);
           if (minIndent < colonAfterText.length) {
             const range = new vscode.Range(

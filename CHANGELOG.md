@@ -1,5 +1,9 @@
 # Change Log
 
+### 3.1.0
+2024/09/14 Sat
+- support setting.json LineNumber.delimiter
+
 ### 3.0.1
 2024/08/08 Thu
 - update README
