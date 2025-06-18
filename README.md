@@ -100,16 +100,18 @@ _ = Space
 
 ```
 099:_ABC
-100: 
-101:____DEF
-102: 
-103:_______GHI
+100:_
+101:__
+102:____DEF
+103:___
+104:_____
+105:_______GHI
 ```
 ↓
 ```
 099:_ABC
-101:____DEF
-103:_______GHI
+102:____DEF
+105:_______GHI
 ```
 
 ### Line Number : Edit Line Number Text : Delete Indent
